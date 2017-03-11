@@ -20,6 +20,7 @@ public class OnLoginActivity extends AppCompatActivity implements View.OnClickLi
         editdetails=(Button)findViewById(R.id.edit);
 
         nreg.setOnClickListener(this);
+        editdetails.setOnClickListener(this);
     }
 
 

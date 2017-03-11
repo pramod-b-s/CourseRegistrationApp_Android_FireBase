@@ -49,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             regbtn=(Button)findViewById(R.id.regbutton);
             regemail=(EditText)findViewById(R.id.regemail);
+            regemail.setText("@nitk.ac.in");
             //regname=(EditText)findViewById(R.id.nametext);
             //regbranch=(EditText)findViewById(R.id.branchtext);
             regpasswd=(EditText)findViewById(R.id.regpassword);
