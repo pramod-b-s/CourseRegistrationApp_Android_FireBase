@@ -1,5 +1,5 @@
 package com.google.pramodbs.collegehelper;
-
+//LOC=141
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -73,6 +73,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             //String entname=regname.getText().toString();
             //String entbranch=regbranch.getText().toString();
 
+            if(emailid.endsWith("@nitk.ac.in")==false){
+                Toast.makeText(this,"Enter NITK email ID to proceed !",Toast.LENGTH_SHORT).show();
+                return;
+            }
             if(TextUtils.isEmpty(emailid)){
                 Toast.makeText(this,"Enter email ID to proceed !",Toast.LENGTH_SHORT).show();
                 return;

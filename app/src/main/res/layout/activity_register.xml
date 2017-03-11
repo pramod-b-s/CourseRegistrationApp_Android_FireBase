@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
@@ -8,7 +8,30 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.google.pramodbs.collegehelper.RegisterActivity">
+
+    <TextView
+        android:textSize="30dp"
+        android:text="User Registration"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/disp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:hint="Enter your Login ID"
+        android:id="@+id/regemail"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        />
 
     <EditText
         android:layout_width="match_parent"
@@ -32,51 +55,24 @@
         android:layout_alignLeft="@+id/regpassword"
         android:layout_alignStart="@+id/regpassword" />
 
-    <TextView
-        android:text="Already Registered ? Login here"
-        android:id="@+id/regtxtview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
-        android:layout_alignBaseline="@+id/regbutton"
-        android:layout_alignBottom="@+id/regbutton"
-        android:layout_toRightOf="@+id/regbutton"
-        android:layout_toEndOf="@+id/regbutton" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="80dp"
-        android:hint="Enter your Login ID"
-        android:id="@+id/regemail"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:textSize="30dp"
-        android:text="User Registration"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/disp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
-
     <Button
         android:text="Register"
         android:id="@+id/regbutton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="25dp"
         android:layout_below="@+id/regpasswordre"
         android:layout_alignLeft="@+id/regpasswordre"
         android:layout_alignStart="@+id/regpasswordre" />
 
-</RelativeLayout>
+    <TextView
+        android:text="Already Registered ? Login here"
+        android:id="@+id/regtxtview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_alignBaseline="@+id/regbutton"
+        android:layout_alignBottom="@+id/regbutton"
+        />
+
+</LinearLayout>

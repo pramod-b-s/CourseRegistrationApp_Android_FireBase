@@ -1,5 +1,5 @@
 package com.google.pramodbs.collegehelper;
-
+//LOC=123
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         email=(EditText)findViewById(R.id.email);
         passwd=(EditText)findViewById(R.id.password);
         regsignin=(TextView)findViewById(R.id.txtview);
+
+        email.setText("@nitk.ac.in");
 
         progress=new ProgressDialog(this);
 
