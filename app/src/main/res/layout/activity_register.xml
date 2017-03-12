@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollvw3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_register"
@@ -9,7 +17,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.google.pramodbs.collegehelper.RegisterActivity">
+    tools:context="com.google.pramodbs.collegehelper.RegisterActivity"
+    android:background="@drawable/nitk_light_house">
 
     <TextView
         android:textSize="30dp"
@@ -19,7 +28,8 @@
         android:id="@+id/disp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -31,6 +41,8 @@
         android:id="@+id/regemail"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         />
 
     <EditText
@@ -39,10 +51,12 @@
         android:inputType="textPassword"
         android:ems="10"
         android:hint="Enter Password !"
+        android:textColorHint="#FFFFFF"
         android:id="@+id/regpassword"
         android:layout_below="@+id/regemail"
         android:layout_alignLeft="@+id/regemail"
-        android:layout_alignStart="@+id/regemail" />
+        android:layout_alignStart="@+id/regemail"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -53,7 +67,10 @@
         android:id="@+id/regpasswordre"
         android:layout_below="@+id/regpassword"
         android:layout_alignLeft="@+id/regpassword"
-        android:layout_alignStart="@+id/regpassword" />
+        android:layout_alignStart="@+id/regpassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        />
 
     <Button
         android:text="Register"
@@ -63,7 +80,9 @@
         android:layout_marginTop="25dp"
         android:layout_below="@+id/regpasswordre"
         android:layout_alignLeft="@+id/regpasswordre"
-        android:layout_alignStart="@+id/regpasswordre" />
+        android:layout_alignStart="@+id/regpasswordre"
+        android:textColor="#FFFFFF"
+        android:background="#808080"/>
 
     <TextView
         android:text="Already Registered ? Login here"
@@ -73,6 +92,8 @@
         android:layout_marginTop="25dp"
         android:layout_alignBaseline="@+id/regbutton"
         android:layout_alignBottom="@+id/regbutton"
-        />
+        android:textColor="#FFFFFF"/>
 
 </LinearLayout>
+
+</ScrollView>

@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollvw2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:background="#9999FF">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_on_login"
@@ -19,10 +28,43 @@
         android:id="@+id/newreg" />
 
     <Button
-        android:text="Re-Register"
+        android:text="Edit Registration "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/newreg"
         android:layout_marginTop="25dp"
         android:id="@+id/edit" />
+
+    <Button
+        android:text="View Courses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newreg"
+        android:layout_marginTop="25dp"
+        android:id="@+id/view" />
+
+    <Button
+        android:text="See Attendance "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newreg"
+        android:layout_marginTop="25dp"
+        android:id="@+id/seeatt" />
+
+    <Button
+        android:text="Logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newreg"
+        android:layout_marginTop="25dp"
+        android:id="@+id/logout" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="All CORE Courses are COMPULSORY ! If not selected,they'll get auto-selected !"/>
+
 </LinearLayout>
+
+</ScrollView>

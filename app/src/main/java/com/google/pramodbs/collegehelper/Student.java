@@ -5,18 +5,21 @@ package com.google.pramodbs.collegehelper;
  */
 
 public class Student {
-    public String name,rollno,regno;
-    public int attendance=0;
+    public String name,rollno,regno,branch,year;
+    public int CORE1att=0,CORE2att=0,CORE3att=0,CORE4att=0,CORE5att=0,CORE6att=0,ELECTIVE1att=0,ELECTIVE2att=0;
+    public String CORE1,CORE2,CORE3,CORE4,CORE5,CORE6,ELECTIVE1,ELECTIVE2;
+    //public int attendance=0;
 
     public Student(){
 
     }
 
-    public Student(String name,String rollno,String regno){
+    public Student(String name,String rollno,String regno,String branch,String year){
         this.name=name;
         this.rollno=rollno;
         this.regno=regno;
-        this.attendance=0;
+        this.branch=branch;
+        this.year=year;
     }
 
 }

@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:orientation="vertical"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:background="#CCFFFF">
 
         <TextView
             android:id="@+id/titlefield"
@@ -58,7 +59,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Available Courses"
+            android:text="Review Courses"
             android:id="@+id/savebtn"/>
 
         <TextView
