@@ -22,13 +22,13 @@
 
         <TextView
             android:textSize="30dp"
-            android:text="Course Summary"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/disp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -39,7 +39,8 @@
             android:layout_marginTop="15dp"
             android:id="@+id/core"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"
+            android:textColor="#000000"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -115,7 +116,8 @@
             android:layout_marginTop="30dp"
             android:id="@+id/elec"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"
+            android:textColor="#000000"/>
 
         <TextView
             android:layout_width="match_parent"

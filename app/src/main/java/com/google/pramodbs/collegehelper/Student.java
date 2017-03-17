@@ -6,8 +6,8 @@ package com.google.pramodbs.collegehelper;
 
 public class Student {
     public String name,rollno,regno,branch,year;
-    public int CORE1att=0,CORE2att=0,CORE3att=0,CORE4att=0,CORE5att=0,CORE6att=0,ELECTIVE1att=0,ELECTIVE2att=0;
-    public String CORE1,CORE2,CORE3,CORE4,CORE5,CORE6,ELECTIVE1,ELECTIVE2;
+    //public int CORE1att=0,CORE2att=0,CORE3att=0,CORE4att=0,CORE5att=0,CORE6att=0,ELECTIVE1att=0,ELECTIVE2att=0;
+    public String C1,C2,C3,C4,C5,C6,E1,E2;
     //public int attendance=0;
 
     public Student(){

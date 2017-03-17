@@ -49,12 +49,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private TextView title,cores,electives;
     private EditText name,roll,reg;
-    private Spinner year,branch;
-    private String yearchosen,branchchosen;
+    private Spinner year,branch,sp1,sp2,sp3,sp4,sp5,sp6,spe1,spe2;
+    private String yearchosen,branchchosen,t1,t2,t3,t4,t5,t6,te1,te2;
 
-    private CheckBox b1,b2,b3,b4,b5,b6,be1,be2;
+    private TextView b1,b2,b3,b4,b5,b6,be1,be2;
 
-    private String[] yearopts,branchopts,c2opts,c3opts,c4opts,c2eopts,c3eopts,c4eopts,e2opts,e3opts,
+    private String[] yearopts,branchopts,crsopts,c2opts,c3opts,c4opts,c2eopts,c3eopts,c4eopts,e2opts,e3opts,
     e4opts,e2eopts,e3eopts,e4eopts,m2opts,m3opts,m4opts,m2eopts,m3eopts,m4eopts,c2fac,c3fac,c4fac,e2fac,e3fac,e4fac,
     m2fac,m3fac,m4fac;
     private ValueEventListener postListener;
@@ -80,28 +80,23 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         logoutbtn=(Button)findViewById(R.id.logoutbtn);
         regbutton=(Button)findViewById(R.id.regbtn);
 
-        b1=(CheckBox)findViewById(R.id.c1);
-        b2=(CheckBox)findViewById(R.id.c2);
-        b3=(CheckBox)findViewById(R.id.c3);
-        b4=(CheckBox)findViewById(R.id.c4);
-        b5=(CheckBox)findViewById(R.id.c5);
-        b6=(CheckBox)findViewById(R.id.c6);
-        be1=(CheckBox)findViewById(R.id.ce1);
-        be2=(CheckBox)findViewById(R.id.ce2);
-        b1.setEnabled(false);
-        b2.setEnabled(false);
-        b3.setEnabled(false);
-        b4.setEnabled(false);
-        b5.setEnabled(false);
-        b6.setEnabled(false);
-        be1.setEnabled(false);
-        be2.setEnabled(false);
+        b1=(TextView) findViewById(R.id.c1);
+        b2=(TextView) findViewById(R.id.c2);
+        b3=(TextView) findViewById(R.id.c3);
+        b4=(TextView) findViewById(R.id.c4);
+        b5=(TextView) findViewById(R.id.c5);
+        b6=(TextView) findViewById(R.id.c6);
+        be1=(TextView) findViewById(R.id.ce1);
+        be2=(TextView) findViewById(R.id.ce2);
 
         this.yearopts = new String[] {
                 "Second Year", "Third Year", "Fourth Year"
         };
         this.branchopts = new String[] {
                 "Computer Science and Engineering", "Electrical and Electronic Engineering", "Mechanical Engineering"
+        };
+        this.crsopts=new String[]{
+                "Undertake","Drop"
         };
 
         //comps
@@ -126,53 +121,54 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         //eee
         this.e2opts = new String[] {
-                "EE200", "EE201", "EE202","EE203","EE204","EE205"
+                "EE200  --  ABD", "EE201  --  HN", "EE202  --  KL","EE203  --  DJ","EE204  --  HHR","EE205  --  GB"
         };
         this.e3opts = new String[] {
-                "EE300", "EE301", "EE302","EE303","EE304",""
+                "EE300  --  ABS", "EE301  --  SPP", "EE302  --  HR","EE303  --  PBM","EE304  --  MSS",""
         };
         this.e4opts = new String[] {
-                "EE400", "EE401", "EE402","EE403","",""
+                "EE400  --  SKN", "EE401  -- NSR", "EE402  --  SV","EE403  --  HC ","",""
         };
         this.e2eopts = new String[] {
-                "EE250", "EE251"
+                "EE250  --  NHS", "EE251  --  GGR"
         };
         this.e3eopts = new String[] {
-                "EE350", "EE351"
+                "EE350  --  SBN", "EE351  --  HCV"
         };
         this.e4eopts = new String[] {
-                "EE450", "EE451"
+                "EE450  --  PBS", "EE451  --  ABS"
         };
 
         //mech
         this.m2opts = new String[] {
-                "ME200", "ME201", "ME202","ME203","ME204","ME205"
+                "ME200  --  KLR", "ME201  --  VK", "ME202  --  HP","ME203  --  IS","ME204  --  UY","ME205  --  RD"
         };
         this.m3opts = new String[] {
-                "ME300", "ME301", "ME302","ME303","ME304",""
+                "ME300  --  MSD", "ME301  --  SRT", "ME302  --  RJ","ME303  --  AK","ME304  --  RA",""
         };
         this.m4opts = new String[] {
-                "ME400", "ME401", "ME402","ME403","",""
+                "ME400  --  NDM", "ME401  --  AS", "ME402  --  RS","ME403  --  MP","",""
         };
         this.m2eopts = new String[] {
-                "ME250", "ME251"
+                "ME250  --  YC", "ME251  --  KN"
         };
         this.m3eopts = new String[] {
-                "ME350", "ME351"
+                "ME350  --  RS", "ME351N  --  SR"
         };
         this.m4eopts = new String[] {
-                "ME450", "ME451"
+                "ME450  --  KJ", "ME451  -- AR"
         };
 
         year=(Spinner)findViewById(R.id.SpinnerYear);
-        branch=(Spinner)findViewById(R.id.SpinnerBranch);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, yearopts);
         year.setAdapter(adapter);
+        year.setOnItemSelectedListener(this);
+
+        branch=(Spinner)findViewById(R.id.SpinnerBranch);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, branchopts);
         branch.setAdapter(adapter1);
-        year.setOnItemSelectedListener(this);
         branch.setOnItemSelectedListener(this);
 
         logoutbtn.setOnClickListener(this);
@@ -187,33 +183,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         roll=(EditText) findViewById(R.id.rollno);
         reg=(EditText) findViewById(R.id.regno);
 
-        postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                User post = dataSnapshot.getValue(User.class);
-                readname=post.Name;
-                readregno=post.regnumber;
-                readrollno=post.rollnumber;
+        //mDatabase.child("users").child(mUserId).removeEventListener(postListener);
 
-                if(readname.length()>2){
-                    Toast.makeText(ProfileActivity.this,"Already Registered !",Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        mDatabase.child("users").child(mUserId).addValueEventListener(postListener);
-
-        mDatabase.child("users").child(mUserId).removeEventListener(postListener);
-
-
-
-        /*mDatabase.child("CO students").child("2nd year").child(mUserId).removeValue();
+        mDatabase.child("CO students").child("2nd year").child(mUserId).removeValue();
         mDatabase.child("CO students").child("3rd year").child(mUserId).removeValue();
         mDatabase.child("CO students").child("4th year").child(mUserId).removeValue();
 
@@ -300,7 +272,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         mDatabase.child("ME courses").child("4th year").child("ME450").child(mUserId).removeValue();
         mDatabase.child("ME courses").child("4th year").child("ME451").child(mUserId).removeValue();
 
-        mDatabase.child("users").child(mUserId).removeValue();*/
     }
 
     private void saveuserinfo(){
@@ -311,147 +282,128 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         Student student=new Student(namestr,rollchosen,regchosen,branchchosen,yearchosen);
 
-        /*mDatabase.child("names").child(mUserId).child("Name").setValue(name);
-        mDatabase.child("branches").child(mUserId).child("Branch").setValue(branchchosen);
-        mDatabase.child("years").child(mUserId).child("Year").setValue(yearchosen);
-
-        /*Map<String,User> mParent = new HashMap<String ,User>();
-        mParent.put(namestr,new User(branchchosen,yearchosen));*/
-
-        /*if(b1.isChecked()==true && b2.isChecked()==true && b3.isChecked()==true &&
-                b4.isChecked()==true && b5.isChecked()==true && b6.isChecked()==true) {
-                if (yearchosen == "Second Year") {
-                    lock1 = 1;
-                } else{
-                    Toast.makeText(ProfileActivity.this, "All CORE Courses MUST be chosen !", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            }
-        else if(b1.isChecked()==true && b2.isChecked()==true && b3.isChecked()==true &&
-                b4.isChecked()==true && b5.isChecked()==true) {
-                if (yearchosen == "Third Year") {
-                    lock1 = 1;
-                }else{
-                    Toast.makeText(ProfileActivity.this, "All CORE Courses MUST be chosen !", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            }
-        else if(b1.isChecked()==true && b2.isChecked()==true && b3.isChecked()==true &&
-                b4.isChecked()==true) {
-            if (yearchosen == "Fourth Year") {
-                lock1 = 1;
-            } else {
-                Toast.makeText(ProfileActivity.this, "All CORE Courses MUST be chosen !", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
-        Toast.makeText(ProfileActivity.this, " !"+lock1, Toast.LENGTH_SHORT).show();*/
-
         //FOR COMPS
             if (branchchosen == "Computer Science and Engineering") {
                 //FOR SECOND YEAR
                 if (yearchosen == "Second Year") {
-                    mDatabase.child("CO courses").child("2nd year").child("CO200").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("2nd year").child("CO201").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("2nd year").child("CO202").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("2nd year").child("CO203").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("2nd year").child("CO204").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("2nd year").child("CO205").child(mUserId).setValue(student);
-
-                    if (be1.isChecked() == false && be2.isChecked() == false) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c2opts[0],
-                                c2opts[1], c2opts[2], c2opts[3], c2opts[4], c2opts[5]);
-                        mDatabase.child("CO students").child("2nd year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true && be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c2opts[0],
-                                c2opts[1], c2opts[2], c2opts[3], c2opts[4], c2opts[5], c2eopts[0], c2eopts[1]);
-                        mDatabase.child("CO courses").child("2nd year").child("CO250").child(mUserId).setValue(student);
-                        mDatabase.child("CO courses").child("2nd year").child("CO251").child(mUserId).setValue(student);
-                        mDatabase.child("CO students").child("2nd year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c2opts[0],
-                                c2opts[1], c2opts[2], c2opts[3], c2opts[4], c2opts[5], c2eopts[0]);
-                        mDatabase.child("CO courses").child("2nd year").child("CO250").child(mUserId).setValue(student);
-                        mDatabase.child("CO students").child("2nd year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
-                    } else if (be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c2opts[0],
-                                c2opts[1], c2opts[2], c2opts[3], c2opts[4], c2opts[5], c2eopts[1]);
-                        mDatabase.child("CO courses").child("2nd year").child("CO251").child(mUserId).setValue(student);
-                        mDatabase.child("CO students").child("2nd year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
+                    if(t1==crsopts[0]) {
+                        mDatabase.child("CO courses").child("2nd year").child("CO200").child(mUserId).setValue(student);
                     }
+                    if(t2==crsopts[0]){
+                        mDatabase.child("CO courses").child("2nd year").child("CO201").child(mUserId).setValue(student);
+                    }
+                    if(t3==crsopts[0]){
+                        mDatabase.child("CO courses").child("2nd year").child("CO202").child(mUserId).setValue(student);
+                    }
+                    if(t4==crsopts[0]){
+                        mDatabase.child("CO courses").child("2nd year").child("CO203").child(mUserId).setValue(student);
+                    }
+                    if(t5==crsopts[0]){
+                        mDatabase.child("CO courses").child("2nd year").child("CO204").child(mUserId).setValue(student);
+                    }
+                    if(t6==crsopts[0]){
+                        mDatabase.child("CO courses").child("2nd year").child("CO205").child(mUserId).setValue(student);
+                    }
+
+                    if(te1==crsopts[0]) {
+                        mDatabase.child("CO courses").child("2nd year").child("CO250").child(mUserId).setValue(student);
+                    }
+                    if(te2==crsopts[0]){
+                        mDatabase.child("CO courses").child("2nd year").child("CO251").child(mUserId).setValue(student);
+                    }
+
+                    mDatabase.child("CO students").child("2nd year").child(mUserId).setValue(student);
+
+                    mDatabase.child("CO students").child("2nd year").child(mUserId).child(c2opts[0]).setValue(t1);
+                    mDatabase.child("CO students").child("2nd year").child(mUserId).child(c2opts[1]).setValue(t2);
+                    mDatabase.child("CO students").child("2nd year").child(mUserId).child(c2opts[2]).setValue(t3);
+                    mDatabase.child("CO students").child("2nd year").child(mUserId).child(c2opts[3]).setValue(t4);
+                    mDatabase.child("CO students").child("2nd year").child(mUserId).child(c2opts[4]).setValue(t5);
+                    mDatabase.child("CO students").child("2nd year").child(mUserId).child(c2opts[5]).setValue(t6);
+
+                    mDatabase.child("CO students").child("2nd year").child(mUserId).child(c2eopts[0]).setValue(te1);
+                    mDatabase.child("CO students").child("2nd year").child(mUserId).child(c2eopts[1]).setValue(te2);
+
+                    User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,t6,te1,te2);
+
+                    mDatabase.child("users").child(mUserId).setValue(user);
+
                 }
                 //FOR THIRD YEAR
                 if (yearchosen == "Third Year") {
-
-                    mDatabase.child("CO courses").child("3rd year").child("CO300").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("3rd year").child("CO301").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("3rd year").child("CO302").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("3rd year").child("CO303").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("3rd year").child("CO304").child(mUserId).setValue(student);
-
-                    if (be1.isChecked() == false && be2.isChecked() == false) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c3opts[0],
-                                c3opts[1], c3opts[2], c3opts[3], c3opts[4], c3opts[5]);
-                        mDatabase.child("CO students").child("3rd year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true && be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c3opts[0],
-                                c3opts[1], c3opts[2], c3opts[3], c3opts[4], c3opts[5], c3eopts[0], c3eopts[1]);
-                        mDatabase.child("CO courses").child("3rd year").child("CO350").child(mUserId).setValue(student);
-                        mDatabase.child("CO courses").child("3rd year").child("CO351").child(mUserId).setValue(student);
-                        mDatabase.child("CO students").child("3rd year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c3opts[0],
-                                c3opts[1], c3opts[2], c3opts[3], c3opts[4], c3opts[5], c3eopts[0]);
-                        mDatabase.child("CO courses").child("3rd year").child("CO350").child(mUserId).setValue(student);
-                        mDatabase.child("CO students").child("3rd year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
-                    } else if (be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c3opts[0],
-                                c3opts[1], c3opts[2], c3opts[3], c3opts[4], c3opts[5], c3eopts[1]);
-                        mDatabase.child("CO courses").child("3rd year").child("CO351").child(mUserId).setValue(student);
-                        mDatabase.child("CO students").child("3rd year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
+                    if(t1==crsopts[0]){
+                        mDatabase.child("CO courses").child("3rd year").child("CO300").child(mUserId).setValue(student);
                     }
+                    if(t2==crsopts[0]){
+                        mDatabase.child("CO courses").child("3rd year").child("CO301").child(mUserId).setValue(student);
+                    }
+                    if(t3==crsopts[0]){
+                        mDatabase.child("CO courses").child("3rd year").child("CO302").child(mUserId).setValue(student);
+                    }
+                    if(t4==crsopts[0]){
+                        mDatabase.child("CO courses").child("3rd year").child("CO303").child(mUserId).setValue(student);
+                    }
+                    if(t5==crsopts[0]){
+                        mDatabase.child("CO courses").child("3rd year").child("CO304").child(mUserId).setValue(student);
+                    }
+
+                    if(te1==crsopts[0]) {
+                        mDatabase.child("CO courses").child("3rd year").child("CO350").child(mUserId).setValue(student);
+                    }
+                    if(te2==crsopts[0]){
+                        mDatabase.child("CO courses").child("3rd year").child("CO351").child(mUserId).setValue(student);
+                    }
+
+                    mDatabase.child("CO students").child("3rd year").child(mUserId).setValue(student);
+
+                    mDatabase.child("CO students").child("3rd year").child(mUserId).child(c3opts[0]).setValue(t1);
+                    mDatabase.child("CO students").child("3rd year").child(mUserId).child(c3opts[1]).setValue(t2);
+                    mDatabase.child("CO students").child("3rd year").child(mUserId).child(c3opts[2]).setValue(t3);
+                    mDatabase.child("CO students").child("3rd year").child(mUserId).child(c3opts[3]).setValue(t4);
+                    mDatabase.child("CO students").child("3rd year").child(mUserId).child(c3opts[4]).setValue(t5);
+
+                    mDatabase.child("CO students").child("3rd year").child(mUserId).child(c3eopts[0]).setValue(te1);
+                    mDatabase.child("CO students").child("3rd year").child(mUserId).child(c3eopts[1]).setValue(te2);
+
+                    User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,"",te1,te2);
+
+                    mDatabase.child("users").child(mUserId).setValue(user);
                 }
                 //FOR FINAL YEAR
                 if (yearchosen == "Fourth Year") {
-                    mDatabase.child("CO courses").child("4th year").child("CO400").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("4th year").child("CO401").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("4th year").child("CO402").child(mUserId).setValue(student);
-                    mDatabase.child("CO courses").child("4th year").child("CO403").child(mUserId).setValue(student);
-
-                    if (be1.isChecked() == false && be2.isChecked() == false) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c4opts[0],
-                                c4opts[1], c4opts[2], c4opts[3], c4opts[4], c4opts[5]);
-                        mDatabase.child("CO students").child("4th year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true && be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c4opts[0],
-                                c4opts[1], c4opts[2], c4opts[3], c4opts[4], c4opts[5], c4eopts[0], c4eopts[1]);
-                        mDatabase.child("CO courses").child("4th year").child("CO450").child(mUserId).setValue(student);
-                        mDatabase.child("CO courses").child("4th year").child("CO451").child(mUserId).setValue(student);
-                        mDatabase.child("CO students").child("4th year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c4opts[0],
-                                c4opts[1], c4opts[2], c4opts[3], c4opts[4], c4opts[5], c4eopts[0]);
-                        mDatabase.child("CO courses").child("4th year").child("CO450").child(mUserId).setValue(student);
-                        mDatabase.child("CO students").child("4th year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
-                    } else if (be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, c4opts[0],
-                                c4opts[1], c4opts[2], c4opts[3], c4opts[4], c4opts[5], c4eopts[0], c4eopts[1]);
-                        mDatabase.child("CO courses").child("4th year").child("CO450").child(mUserId).setValue(student);
-                        mDatabase.child("CO courses").child("4th year").child("CO451").child(mUserId).setValue(student);
-                        mDatabase.child("CO students").child("4th year").child(mUserId).setValue(user);
-                        mDatabase.child("users").child(mUserId).setValue(user);
+                    if(t1==crsopts[0]){
+                        mDatabase.child("CO courses").child("4th year").child("CO400").child(mUserId).setValue(student);
                     }
+                    if(t2==crsopts[0]){
+                        mDatabase.child("CO courses").child("4th year").child("CO401").child(mUserId).setValue(student);
+                    }
+                    if(t3==crsopts[0]){
+                        mDatabase.child("CO courses").child("4th year").child("CO402").child(mUserId).setValue(student);
+                    }
+                    if(t4==crsopts[0]){
+                        mDatabase.child("CO courses").child("4th year").child("CO403").child(mUserId).setValue(student);
+                    }
+
+                    if(te1==crsopts[0]) {
+                        mDatabase.child("CO courses").child("4th year").child("CO450").child(mUserId).setValue(student);
+                    }
+                    if(te2==crsopts[0]){
+                        mDatabase.child("CO courses").child("4th year").child("CO451").child(mUserId).setValue(student);
+                    }
+
+                    mDatabase.child("CO students").child("4th year").child(mUserId).setValue(student);
+
+                    mDatabase.child("CO students").child("4th year").child(mUserId).child(c4opts[0]).setValue(t1);
+                    mDatabase.child("CO students").child("4th year").child(mUserId).child(c4opts[1]).setValue(t2);
+                    mDatabase.child("CO students").child("4th year").child(mUserId).child(c4opts[2]).setValue(t3);
+                    mDatabase.child("CO students").child("4th year").child(mUserId).child(c4opts[3]).setValue(t4);
+
+                    mDatabase.child("CO students").child("4th year").child(mUserId).child(c4eopts[0]).setValue(te1);
+                    mDatabase.child("CO students").child("4th year").child(mUserId).child(c4eopts[1]).setValue(te2);
+
+                    User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,"","",te1,te2);
+
+                    mDatabase.child("users").child(mUserId).setValue(user);
                 }
             }
 
@@ -460,93 +412,123 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             if (branchchosen == "Electrical and Electronic Engineering") {
                 //FOR SECOND YEAR
                 if (yearchosen == "Second Year") {
-                    mDatabase.child("EE courses").child("2nd year").child("EE200").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("2nd year").child("EE201").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("2nd year").child("EE202").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("2nd year").child("EE203").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("2nd year").child("EE204").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("2nd year").child("EE205").child(mUserId).setValue(student);
-
-                    if (be1.isChecked() == false && be2.isChecked() == false) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e2opts[0],
-                                e2opts[1], e2opts[2], e2opts[3], e2opts[4], e2opts[5]);
-                        mDatabase.child("EE students").child("2nd year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true && be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e2opts[0],
-                                e2opts[1], e2opts[2], e2opts[3], e2opts[4], e2opts[5], e2eopts[0], e2eopts[1]);
-                        mDatabase.child("EE courses").child("2nd year").child("EE250").child(mUserId).setValue(student);
-                        mDatabase.child("EE courses").child("2nd year").child("EE251").child(mUserId).setValue(student);
-                        mDatabase.child("EE students").child("2nd year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e2opts[0],
-                                e2opts[1], e2opts[2], e2opts[3], e2opts[4], e2opts[5], e2eopts[0]);
-                        mDatabase.child("EE courses").child("2nd year").child("EE250").child(mUserId).setValue(student);
-                        mDatabase.child("EE students").child("2nd year").child(mUserId).setValue(user);
-                    } else if (be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e2opts[0],
-                                e2opts[1], e2opts[2], e2opts[3], e2opts[4], e2opts[5], e2eopts[1]);
-                        mDatabase.child("EE courses").child("2nd year").child("EE251").child(mUserId).setValue(student);
-                        mDatabase.child("EE students").child("2nd year").child(mUserId).setValue(user);
+                    if(t1==crsopts[0]) {
+                        mDatabase.child("EE courses").child("2nd year").child("EE200").child(mUserId).setValue(student);
                     }
+                    if(t2==crsopts[0]){
+                        mDatabase.child("EE courses").child("2nd year").child("EE201").child(mUserId).setValue(student);
+                    }
+                    if(t3==crsopts[0]){
+                        mDatabase.child("EE courses").child("2nd year").child("EE202").child(mUserId).setValue(student);
+                    }
+                    if(t4==crsopts[0]){
+                        mDatabase.child("EE courses").child("2nd year").child("EE203").child(mUserId).setValue(student);
+                    }
+                    if(t5==crsopts[0]){
+                        mDatabase.child("EE courses").child("2nd year").child("EE204").child(mUserId).setValue(student);
+                    }
+                    if(t6==crsopts[0]){
+                        mDatabase.child("EE courses").child("2nd year").child("EE205").child(mUserId).setValue(student);
+                    }
+
+                    if(te1==crsopts[0]) {
+                        mDatabase.child("EE courses").child("2nd year").child("EE250").child(mUserId).setValue(student);
+                    }
+                    if(te2==crsopts[0]){
+                        mDatabase.child("EE courses").child("2nd year").child("EE251").child(mUserId).setValue(student);
+                    }
+
+                    mDatabase.child("EE students").child("2nd year").child(mUserId).setValue(student);
+
+                    mDatabase.child("EE students").child("2nd year").child(mUserId).child(c2opts[0]).setValue(t1);
+                    mDatabase.child("EE students").child("2nd year").child(mUserId).child(c2opts[1]).setValue(t2);
+                    mDatabase.child("EE students").child("2nd year").child(mUserId).child(c2opts[2]).setValue(t3);
+                    mDatabase.child("EE students").child("2nd year").child(mUserId).child(c2opts[3]).setValue(t4);
+                    mDatabase.child("EE students").child("2nd year").child(mUserId).child(c2opts[4]).setValue(t5);
+                    mDatabase.child("EE students").child("2nd year").child(mUserId).child(c2opts[5]).setValue(t6);
+
+                    mDatabase.child("EE students").child("2nd year").child(mUserId).child(c2eopts[0]).setValue(te1);
+                    mDatabase.child("EE students").child("2nd year").child(mUserId).child(c2eopts[1]).setValue(te2);
+
+                    User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,t6,te1,te2);
+
+                    mDatabase.child("users").child(mUserId).setValue(user);
                 }
                 //FOR THIRD YEAR
                 if (yearchosen == "Third Year") {
-                    mDatabase.child("EE courses").child("3rd year").child("EE300").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("3rd year").child("EE301").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("3rd year").child("EE302").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("3rd year").child("EE303").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("3rd year").child("EE304").child(mUserId).setValue(student);
-
-                    if (be1.isChecked() == false && be2.isChecked() == false) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e3opts[0],
-                                e3opts[1], e3opts[2], e3opts[3], e3opts[4], e3opts[5]);
-                        mDatabase.child("EE students").child("3rd year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true && be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e3opts[0],
-                                e3opts[1], e3opts[2], e3opts[3], e3opts[4], e3opts[5], e3eopts[0], e3eopts[1]);
-                        mDatabase.child("EE courses").child("3rd year").child("EE350").child(mUserId).setValue(student);
-                        mDatabase.child("EE courses").child("3rd year").child("EE351").child(mUserId).setValue(student);
-                        mDatabase.child("EE students").child("3rd year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e3opts[0],
-                                e3opts[1], e3opts[2], e3opts[3], e3opts[4], e3opts[5], e3eopts[0]);
-                        mDatabase.child("EE courses").child("3rd year").child("EE350").child(mUserId).setValue(student);
-                        mDatabase.child("EE students").child("3rd year").child(mUserId).setValue(user);
-                    } else if (be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e3opts[0],
-                                e3opts[1], e3opts[2], e3opts[3], e3opts[4], e3opts[5], e3eopts[1]);
-                        mDatabase.child("EE courses").child("3rd year").child("EE351").child(mUserId).setValue(student);
-                        mDatabase.child("EE students").child("3rd year").child(mUserId).setValue(user);
+                    if(t1==crsopts[0]){
+                        mDatabase.child("EE courses").child("3rd year").child("EE300").child(mUserId).setValue(student);
                     }
+                    if(t2==crsopts[0]){
+                        mDatabase.child("EE courses").child("3rd year").child("EE301").child(mUserId).setValue(student);
+                    }
+                    if(t3==crsopts[0]){
+                        mDatabase.child("EE courses").child("3rd year").child("EE302").child(mUserId).setValue(student);
+                    }
+                    if(t4==crsopts[0]){
+                        mDatabase.child("EE courses").child("3rd year").child("EE303").child(mUserId).setValue(student);
+                    }
+                    if(t5==crsopts[0]){
+                        mDatabase.child("EE courses").child("3rd year").child("EE304").child(mUserId).setValue(student);
+                    }
+
+                    if(te1==crsopts[0]) {
+                        mDatabase.child("EE courses").child("3rd year").child("EE350").child(mUserId).setValue(student);
+                    }
+                    if(te2==crsopts[0]){
+                        mDatabase.child("EE courses").child("3rd year").child("EE351").child(mUserId).setValue(student);
+                    }
+
+                    mDatabase.child("EE students").child("3rd year").child(mUserId).setValue(student);
+
+                    mDatabase.child("EE students").child("3rd year").child(mUserId).child(c3opts[0]).setValue(t1);
+                    mDatabase.child("EE students").child("3rd year").child(mUserId).child(c3opts[1]).setValue(t2);
+                    mDatabase.child("EE students").child("3rd year").child(mUserId).child(c3opts[2]).setValue(t3);
+                    mDatabase.child("EE students").child("3rd year").child(mUserId).child(c3opts[3]).setValue(t4);
+                    mDatabase.child("EE students").child("3rd year").child(mUserId).child(c3opts[4]).setValue(t5);
+
+                    mDatabase.child("EE students").child("3rd year").child(mUserId).child(c3eopts[0]).setValue(te1);
+                    mDatabase.child("EE students").child("3rd year").child(mUserId).child(c3eopts[1]).setValue(te2);
+
+                    User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,"",te1,te2);
+
+                    mDatabase.child("users").child(mUserId).setValue(user);
                 }
                 //FOR FINAL YEAR
                 if (yearchosen == "Fourth Year") {
-                    mDatabase.child("EE courses").child("4th year").child("EE400").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("4th year").child("EE401").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("4th year").child("EE402").child(mUserId).setValue(student);
-                    mDatabase.child("EE courses").child("4th year").child("EE403").child(mUserId).setValue(student);
-
-                    if (be1.isChecked() == false && be2.isChecked() == false) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e4opts[0],
-                                e4opts[1], e4opts[2], e4opts[3], e4opts[4], e4opts[5]);
-                        mDatabase.child("EE students").child("4th year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true && be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e4opts[0],
-                                e4opts[1], e4opts[2], e4opts[3], e4opts[4], e4opts[5], e4eopts[0], e4eopts[1]);
-                        mDatabase.child("EE courses").child("4th year").child("EE450").child(mUserId).setValue(student);
-                        mDatabase.child("EE courses").child("4th year").child("EE451").child(mUserId).setValue(student);
-                        mDatabase.child("EE students").child("4th year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e4opts[0],
-                                e4opts[1], e4opts[2], e4opts[3], e4opts[4], e4opts[5], e4eopts[0]);
-                        mDatabase.child("EE courses").child("4th year").child("EE450").child(mUserId).setValue(student);
-                        mDatabase.child("EE students").child("4th year").child(mUserId).setValue(user);
-                    } else if (be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, e4opts[0],
-                                e4opts[1], e4opts[2], e4opts[3], e4opts[4], e4opts[5], e4eopts[1]);
-                        mDatabase.child("EE courses").child("4th year").child("EE451").child(mUserId).setValue(student);
-                        mDatabase.child("EE students").child("4th year").child(mUserId).setValue(user);
+                    if(t1==crsopts[0]){
+                        mDatabase.child("EE courses").child("4th year").child("EE400").child(mUserId).setValue(student);
                     }
+                    if(t2==crsopts[0]){
+                        mDatabase.child("EE courses").child("4th year").child("EE401").child(mUserId).setValue(student);
+                    }
+                    if(t3==crsopts[0]){
+                        mDatabase.child("EE courses").child("4th year").child("EE402").child(mUserId).setValue(student);
+                    }
+                    if(t4==crsopts[0]){
+                        mDatabase.child("EE courses").child("4th year").child("EE403").child(mUserId).setValue(student);
+                    }
+
+                    if(te1==crsopts[0]) {
+                        mDatabase.child("EE courses").child("4th year").child("EE450").child(mUserId).setValue(student);
+                    }
+                    if(te2==crsopts[0]){
+                        mDatabase.child("EE courses").child("4th year").child("EE451").child(mUserId).setValue(student);
+                    }
+
+                    mDatabase.child("EE students").child("4th year").child(mUserId).setValue(student);
+
+                    mDatabase.child("EE students").child("4th year").child(mUserId).child(c4opts[0]).setValue(t1);
+                    mDatabase.child("EE students").child("4th year").child(mUserId).child(c4opts[1]).setValue(t2);
+                    mDatabase.child("EE students").child("4th year").child(mUserId).child(c4opts[2]).setValue(t3);
+                    mDatabase.child("EE students").child("4th year").child(mUserId).child(c4opts[3]).setValue(t4);
+
+                    mDatabase.child("EE students").child("4th year").child(mUserId).child(c4eopts[0]).setValue(te1);
+                    mDatabase.child("EE students").child("4th year").child(mUserId).child(c4eopts[1]).setValue(te2);
+
+                    User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,"","",te1,te2);
+
+                    mDatabase.child("users").child(mUserId).setValue(user);
                 }
             }
 
@@ -555,93 +537,123 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             if (branchchosen == "Mechanical Engineering") {
                 //FOR SECOND YEAR
                 if (yearchosen == "Second Year") {
-                    mDatabase.child("ME courses").child("2nd year").child("ME200").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("2nd year").child("ME201").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("2nd year").child("ME202").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("2nd year").child("ME203").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("2nd year").child("ME204").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("2nd year").child("ME205").child(mUserId).setValue(student);
-
-                    if (be1.isChecked() == false && be2.isChecked() == false) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m2opts[0],
-                                m2opts[1], m2opts[2], m2opts[3], m2opts[4], m2opts[5]);
-                        mDatabase.child("ME students").child("2nd year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true && be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m2opts[0],
-                                m2opts[1], m2opts[2], m2opts[3], m2opts[4], m2opts[5], m2eopts[0], m2eopts[1]);
-                        mDatabase.child("ME courses").child("2nd year").child("ME250").child(mUserId).setValue(student);
-                        mDatabase.child("ME courses").child("2nd year").child("ME251").child(mUserId).setValue(student);
-                        mDatabase.child("ME students").child("2nd year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m2opts[0],
-                                m2opts[1], m2opts[2], m2opts[3], m2opts[4], m2opts[5], m2eopts[0]);
-                        mDatabase.child("ME courses").child("2nd year").child("ME250").child(mUserId).setValue(student);
-                        mDatabase.child("ME students").child("2nd year").child(mUserId).setValue(user);
-                    } else if (be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m2opts[0],
-                                m2opts[1], m2opts[2], m2opts[3], m2opts[4], m2opts[5], m2eopts[1]);
-                        mDatabase.child("ME courses").child("2nd year").child("ME251").child(mUserId).setValue(student);
-                        mDatabase.child("ME students").child("2nd year").child(mUserId).setValue(user);
+                    if(t1==crsopts[0]) {
+                        mDatabase.child("ME courses").child("2nd year").child("ME200").child(mUserId).setValue(student);
                     }
+                    if(t2==crsopts[0]){
+                        mDatabase.child("ME courses").child("2nd year").child("ME201").child(mUserId).setValue(student);
+                    }
+                    if(t3==crsopts[0]){
+                        mDatabase.child("ME courses").child("2nd year").child("ME202").child(mUserId).setValue(student);
+                    }
+                    if(t4==crsopts[0]){
+                        mDatabase.child("ME courses").child("2nd year").child("ME203").child(mUserId).setValue(student);
+                    }
+                    if(t5==crsopts[0]){
+                        mDatabase.child("ME courses").child("2nd year").child("ME204").child(mUserId).setValue(student);
+                    }
+                    if(t6==crsopts[0]){
+                        mDatabase.child("ME courses").child("2nd year").child("ME205").child(mUserId).setValue(student);
+                    }
+
+                    if(te1==crsopts[0]) {
+                        mDatabase.child("ME courses").child("2nd year").child("ME250").child(mUserId).setValue(student);
+                    }
+                    if(te2==crsopts[0]){
+                        mDatabase.child("ME courses").child("2nd year").child("ME251").child(mUserId).setValue(student);
+                    }
+
+                    mDatabase.child("ME students").child("2nd year").child(mUserId).setValue(student);
+
+                    mDatabase.child("ME students").child("2nd year").child(mUserId).child(c2opts[0]).setValue(t1);
+                    mDatabase.child("ME students").child("2nd year").child(mUserId).child(c2opts[1]).setValue(t2);
+                    mDatabase.child("ME students").child("2nd year").child(mUserId).child(c2opts[2]).setValue(t3);
+                    mDatabase.child("ME students").child("2nd year").child(mUserId).child(c2opts[3]).setValue(t4);
+                    mDatabase.child("ME students").child("2nd year").child(mUserId).child(c2opts[4]).setValue(t5);
+                    mDatabase.child("ME students").child("2nd year").child(mUserId).child(c2opts[5]).setValue(t6);
+
+                    mDatabase.child("ME students").child("2nd year").child(mUserId).child(c2eopts[0]).setValue(te1);
+                    mDatabase.child("ME students").child("2nd year").child(mUserId).child(c2eopts[1]).setValue(te2);
+
+                    User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,t6,te1,te2);
+
+                    mDatabase.child("users").child(mUserId).setValue(user);
                 }
                 //FOR THIRD YEAR
                 if (yearchosen == "Third Year") {
-                    mDatabase.child("ME courses").child("3rd year").child("ME300").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("3rd year").child("ME301").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("3rd year").child("ME302").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("3rd year").child("ME303").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("3rd year").child("ME304").child(mUserId).setValue(student);
-
-                    if (be1.isChecked() == false && be2.isChecked() == false) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m3opts[0],
-                                m3opts[1], m3opts[2], m3opts[3], m3opts[4], m3opts[5]);
-                        mDatabase.child("ME students").child("3rd year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true && be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m3opts[0],
-                                m3opts[1], m3opts[2], m3opts[3], m3opts[4], m3opts[5], m3eopts[0], m3eopts[1]);
-                        mDatabase.child("ME courses").child("3rd year").child("ME350").child(mUserId).setValue(student);
-                        mDatabase.child("ME courses").child("3rd year").child("ME351").child(mUserId).setValue(student);
-                        mDatabase.child("ME students").child("3rd year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m3opts[0],
-                                m3opts[1], m3opts[2], m3opts[3], m3opts[4], m3opts[5], m3eopts[0]);
-                        mDatabase.child("ME courses").child("3rd year").child("ME350").child(mUserId).setValue(student);
-                        mDatabase.child("ME students").child("3rd year").child(mUserId).setValue(user);
-                    } else if (be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m3opts[0],
-                                m3opts[1], m3opts[2], m3opts[3], m3opts[4], m3opts[5], m3eopts[1]);
-                        mDatabase.child("ME courses").child("3rd year").child("ME351").child(mUserId).setValue(student);
-                        mDatabase.child("ME students").child("3rd year").child(mUserId).setValue(user);
+                    if(t1==crsopts[0]){
+                        mDatabase.child("ME courses").child("3rd year").child("ME300").child(mUserId).setValue(student);
                     }
+                    if(t2==crsopts[0]){
+                        mDatabase.child("ME courses").child("3rd year").child("ME301").child(mUserId).setValue(student);
+                    }
+                    if(t3==crsopts[0]){
+                        mDatabase.child("ME courses").child("3rd year").child("ME302").child(mUserId).setValue(student);
+                    }
+                    if(t4==crsopts[0]){
+                        mDatabase.child("ME courses").child("3rd year").child("ME303").child(mUserId).setValue(student);
+                    }
+                    if(t5==crsopts[0]){
+                        mDatabase.child("ME courses").child("3rd year").child("ME304").child(mUserId).setValue(student);
+                    }
+
+                    if(te1==crsopts[0]) {
+                        mDatabase.child("ME courses").child("3rd year").child("ME350").child(mUserId).setValue(student);
+                    }
+                    if(te2==crsopts[0]){
+                        mDatabase.child("ME courses").child("3rd year").child("ME351").child(mUserId).setValue(student);
+                    }
+
+                    mDatabase.child("ME students").child("3rd year").child(mUserId).setValue(student);
+
+                    mDatabase.child("ME students").child("3rd year").child(mUserId).child(c3opts[0]).setValue(t1);
+                    mDatabase.child("ME students").child("3rd year").child(mUserId).child(c3opts[1]).setValue(t2);
+                    mDatabase.child("ME students").child("3rd year").child(mUserId).child(c3opts[2]).setValue(t3);
+                    mDatabase.child("ME students").child("3rd year").child(mUserId).child(c3opts[3]).setValue(t4);
+                    mDatabase.child("ME students").child("3rd year").child(mUserId).child(c3opts[4]).setValue(t5);
+
+                    mDatabase.child("ME students").child("3rd year").child(mUserId).child(c3eopts[0]).setValue(te1);
+                    mDatabase.child("ME students").child("3rd year").child(mUserId).child(c3eopts[1]).setValue(te2);
+
+                    User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,"",te1,te2);
+
+                    mDatabase.child("users").child(mUserId).setValue(user);
                 }
                 //FOR FINAL YEAR
                 if (yearchosen == "Fourth Year") {
-                    mDatabase.child("ME courses").child("4th year").child("ME400").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("4th year").child("ME401").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("4th year").child("ME402").child(mUserId).setValue(student);
-                    mDatabase.child("ME courses").child("4th year").child("ME403").child(mUserId).setValue(student);
-
-                    if (be1.isChecked() == false && be2.isChecked() == false) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m4opts[0],
-                                m4opts[1], m4opts[2], m4opts[3], m4opts[4], m4opts[5]);
-                        mDatabase.child("ME students").child("4th year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true && be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m4opts[0],
-                                m4opts[1], m4opts[2], m4opts[3], m4opts[4], m4opts[5], m4eopts[0], m4eopts[1]);
-                        mDatabase.child("ME courses").child("4th year").child("ME450").child(mUserId).setValue(student);
-                        mDatabase.child("ME courses").child("4th year").child("ME451").child(mUserId).setValue(student);
-                        mDatabase.child("ME students").child("4th year").child(mUserId).setValue(user);
-                    } else if (be1.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m4opts[0],
-                                m4opts[1], m4opts[2], m4opts[3], m4opts[4], m4opts[5], m4eopts[0]);
-                        mDatabase.child("ME courses").child("4th year").child("ME450").child(mUserId).setValue(student);
-                        mDatabase.child("ME students").child("4th year").child(mUserId).setValue(user);
-                    } else if (be2.isChecked() == true) {
-                        User user = new User(namestr, branchchosen, yearchosen, regchosen, rollchosen, m4opts[0],
-                                m4opts[1], m4opts[2], m4opts[3], m4opts[4], m4opts[5], m4eopts[1]);
-                        mDatabase.child("ME courses").child("4th year").child("ME451").child(mUserId).setValue(student);
-                        mDatabase.child("ME students").child("4th year").child(mUserId).setValue(user);
+                    if(t1.equals(crsopts[0])){
+                        mDatabase.child("ME courses").child("4th year").child("ME400").child(mUserId).setValue(student);
                     }
+                    if(t2.equals(crsopts[0])){
+                        mDatabase.child("ME courses").child("4th year").child("ME401").child(mUserId).setValue(student);
+                    }
+                    if(t3.equals(crsopts[0])){
+                        mDatabase.child("ME courses").child("4th year").child("ME402").child(mUserId).setValue(student);
+                    }
+                    if(t4.equals(crsopts[0])){
+                        mDatabase.child("ME courses").child("4th year").child("ME403").child(mUserId).setValue(student);
+                    }
+
+                    if(te1.equals(crsopts[0])) {
+                        mDatabase.child("ME courses").child("4th year").child("ME450").child(mUserId).setValue(student);
+                    }
+                    if(te2.equals(crsopts[0])){
+                        mDatabase.child("ME courses").child("4th year").child("ME451").child(mUserId).setValue(student);
+                    }
+
+                    mDatabase.child("ME students").child("4th year").child(mUserId).setValue(student);
+
+                    mDatabase.child("ME students").child("4th year").child(mUserId).child(c4opts[0]).setValue(t1);
+                    mDatabase.child("ME students").child("4th year").child(mUserId).child(c4opts[1]).setValue(t2);
+                    mDatabase.child("ME students").child("4th year").child(mUserId).child(c4opts[2]).setValue(t3);
+                    mDatabase.child("ME students").child("4th year").child(mUserId).child(c4opts[3]).setValue(t4);
+
+                    mDatabase.child("ME students").child("4th year").child(mUserId).child(c4eopts[0]).setValue(te1);
+                    mDatabase.child("ME students").child("4th year").child(mUserId).child(c4eopts[1]).setValue(te2);
+
+                    User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,"","",te1,te2);
+
+                    mDatabase.child("users").child(mUserId).setValue(user);
                 }
             }
 
@@ -670,23 +682,67 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             } else if (rollchosen.length() != 7) {
                 Toast.makeText(this, "Invalid roll number !", Toast.LENGTH_SHORT).show();
             } else {
+
                 lock = 1;
 
                 if (yearchosen == "Second Year") {
-                    b1.setEnabled(true);
-                    b2.setEnabled(true);
-                    b3.setEnabled(true);
-                    b4.setEnabled(true);
-                    b5.setEnabled(true);
-                    b6.setEnabled(true);
-                    b1.setChecked(true);
-                    b2.setChecked(true);
-                    b3.setChecked(true);
-                    b4.setChecked(true);
-                    b5.setChecked(true);
-                    b6.setChecked(true);
-                    be1.setEnabled(true);
-                    be2.setEnabled(true);
+
+                    sp1=(Spinner)findViewById(R.id.s1);
+                    ArrayAdapter<String> adaptersp1 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp1.setAdapter(adaptersp1);
+                    sp1.setOnItemSelectedListener(this);
+                    sp1.setEnabled(true);
+
+                    sp2=(Spinner)findViewById(R.id.s2);
+                    ArrayAdapter<String> adaptersp2 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp2.setAdapter(adaptersp2);
+                    sp2.setOnItemSelectedListener(this);
+                    sp2.setEnabled(true);
+
+                    sp3=(Spinner)findViewById(R.id.s3);
+                    ArrayAdapter<String> adaptersp3 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp3.setAdapter(adaptersp3);
+                    sp3.setOnItemSelectedListener(this);
+                    sp3.setEnabled(true);
+
+                    sp4=(Spinner)findViewById(R.id.s4);
+                    ArrayAdapter<String> adaptersp4 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp4.setAdapter(adaptersp4);
+                    sp4.setOnItemSelectedListener(this);
+                    sp4.setEnabled(true);
+
+                    sp5=(Spinner)findViewById(R.id.s5);
+                    ArrayAdapter<String> adaptersp5 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp5.setAdapter(adaptersp5);
+                    sp5.setOnItemSelectedListener(this);
+                    sp5.setEnabled(true);
+
+                    sp6=(Spinner)findViewById(R.id.s6);
+                    ArrayAdapter<String> adaptersp6 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp6.setAdapter(adaptersp6);
+                    sp6.setOnItemSelectedListener(this);
+                    sp6.setEnabled(true);
+
+                    spe1=(Spinner)findViewById(R.id.se1);
+                    ArrayAdapter<String> adapterspe1 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    spe1.setAdapter(adapterspe1);
+                    spe1.setOnItemSelectedListener(this);
+                    spe1.setEnabled(true);
+
+                    spe2=(Spinner)findViewById(R.id.se2);
+                    ArrayAdapter<String> adapterspe2 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    spe2.setAdapter(adapterspe2);
+                    spe2.setOnItemSelectedListener(this);
+                    spe2.setEnabled(true);
+
                     if (branchchosen == "Computer Science and Engineering") {
                         b1.setText(c2opts[0]);
                         b2.setText(c2opts[1]);
@@ -720,18 +776,65 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 }
 
                 if (yearchosen == "Third Year") {
-                    b1.setEnabled(true);
-                    b2.setEnabled(true);
-                    b3.setEnabled(true);
-                    b4.setEnabled(true);
-                    b5.setEnabled(true);
-                    b1.setChecked(true);
-                    b2.setChecked(true);
-                    b3.setChecked(true);
-                    b4.setChecked(true);
-                    b5.setChecked(true);
-                    be1.setEnabled(true);
-                    be2.setEnabled(true);
+
+                    sp1=(Spinner)findViewById(R.id.s1);
+                    ArrayAdapter<String> adaptersp1 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp1.setAdapter(adaptersp1);
+                    sp1.setOnItemSelectedListener(this);
+                    sp1.setEnabled(true);
+
+                    sp2=(Spinner)findViewById(R.id.s2);
+                    ArrayAdapter<String> adaptersp2 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp2.setAdapter(adaptersp2);
+                    sp2.setOnItemSelectedListener(this);
+                    sp2.setEnabled(true);
+
+                    sp3=(Spinner)findViewById(R.id.s3);
+                    ArrayAdapter<String> adaptersp3 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp3.setAdapter(adaptersp3);
+                    sp3.setOnItemSelectedListener(this);
+                    sp3.setEnabled(true);
+
+                    sp4=(Spinner)findViewById(R.id.s4);
+                    ArrayAdapter<String> adaptersp4 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp4.setAdapter(adaptersp4);
+                    sp4.setOnItemSelectedListener(this);
+                    sp4.setEnabled(true);
+
+                    sp5=(Spinner)findViewById(R.id.s5);
+                    ArrayAdapter<String> adaptersp5 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp5.setAdapter(adaptersp5);
+                    sp5.setOnItemSelectedListener(this);
+                    sp5.setEnabled(true);
+
+                    sp6=(Spinner)findViewById(R.id.s6);
+                    ArrayAdapter<String> adaptersp6 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp6.setAdapter(adaptersp6);
+                    sp6.setOnItemSelectedListener(this);
+                    sp6.setEnabled(false);
+
+                    spe1=(Spinner)findViewById(R.id.se1);
+                    ArrayAdapter<String> adapterspe1 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    spe1.setAdapter(adapterspe1);
+                    spe1.setOnItemSelectedListener(this);
+                    spe1.setEnabled(true);
+
+                    spe2=(Spinner)findViewById(R.id.se2);
+                    ArrayAdapter<String> adapterspe2 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    spe2.setAdapter(adapterspe2);
+                    spe2.setOnItemSelectedListener(this);
+                    spe2.setEnabled(true);
+
+                    b6.setText("");
+
                     if (branchchosen == "Computer Science and Engineering") {
                         b1.setText(c3opts[0]);
                         b2.setText(c3opts[1]);
@@ -762,16 +865,66 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 }
 
                 if (yearchosen == "Fourth Year") {
-                    b1.setEnabled(true);
-                    b2.setEnabled(true);
-                    b3.setEnabled(true);
-                    b4.setEnabled(true);
-                    b1.setChecked(true);
-                    b2.setChecked(true);
-                    b3.setChecked(true);
-                    b4.setChecked(true);
-                    be1.setEnabled(true);
-                    be2.setEnabled(true);
+
+                    sp1=(Spinner)findViewById(R.id.s1);
+                    ArrayAdapter<String> adaptersp1 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp1.setAdapter(adaptersp1);
+                    sp1.setOnItemSelectedListener(this);
+                    sp1.setEnabled(true);
+
+                    sp2=(Spinner)findViewById(R.id.s2);
+                    ArrayAdapter<String> adaptersp2 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp2.setAdapter(adaptersp2);
+                    sp2.setOnItemSelectedListener(this);
+                    sp2.setEnabled(true);
+
+                    sp3=(Spinner)findViewById(R.id.s3);
+                    ArrayAdapter<String> adaptersp3 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp3.setAdapter(adaptersp3);
+                    sp3.setOnItemSelectedListener(this);
+                    sp3.setEnabled(true);
+
+                    sp4=(Spinner)findViewById(R.id.s4);
+                    ArrayAdapter<String> adaptersp4 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp4.setAdapter(adaptersp4);
+                    sp4.setOnItemSelectedListener(this);
+                    sp4.setEnabled(true);
+
+                    sp5=(Spinner)findViewById(R.id.s5);
+                    ArrayAdapter<String> adaptersp5 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp5.setAdapter(adaptersp5);
+                    sp5.setOnItemSelectedListener(this);
+                    sp5.setEnabled(false);
+
+                    sp6=(Spinner)findViewById(R.id.s6);
+                    ArrayAdapter<String> adaptersp6 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    sp6.setAdapter(adaptersp6);
+                    sp6.setOnItemSelectedListener(this);
+                    sp6.setEnabled(false);
+
+                    spe1=(Spinner)findViewById(R.id.se1);
+                    ArrayAdapter<String> adapterspe1 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    spe1.setAdapter(adapterspe1);
+                    spe1.setOnItemSelectedListener(this);
+                    spe1.setEnabled(true);
+
+                    spe2=(Spinner)findViewById(R.id.se2);
+                    ArrayAdapter<String> adapterspe2 = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_item, crsopts);
+                    spe2.setAdapter(adapterspe2);
+                    spe2.setOnItemSelectedListener(this);
+                    spe2.setEnabled(true);
+
+                    b5.setText("");
+                    b6.setText("");
+
                     if (branchchosen == "Computer Science and Engineering") {
                         b1.setText(c4opts[0]);
                         b2.setText(c4opts[1]);
@@ -798,15 +951,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 }
 
-            /*if(branchchosen=="Computer Science and Engineering"){
-                reg.setText("CO");
-            }
-            if(branchchosen=="Electrical and Electronic Engineering"){
-                reg.setText("EE");
-            }
-            if(branchchosen=="Mechanical Engineering"){
-                reg.setText("ME");
-            }*/
             }
 
         }
@@ -828,6 +972,16 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         Spinner spinner = (Spinner) parent;
         Spinner spinner1 = (Spinner) parent;
+
+        Spinner si1=(Spinner) parent;
+        Spinner si2=(Spinner) parent;
+        Spinner si3=(Spinner) parent;
+        Spinner si4=(Spinner) parent;
+        Spinner si5=(Spinner) parent;
+        Spinner si6=(Spinner) parent;
+        Spinner sei1=(Spinner) parent;
+        Spinner sei2=(Spinner) parent;
+
         if(spinner.getId() == R.id.SpinnerBranch)
         {
             branchchosen=parent.getItemAtPosition(position).toString();
@@ -835,6 +989,30 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         if(spinner1.getId() == R.id.SpinnerYear)
         {
             yearchosen=parent.getItemAtPosition(position).toString();
+        }
+        if(si1.getId() == R.id.s1){
+            t1=parent.getItemAtPosition(position).toString();
+        }
+        if(si2.getId() == R.id.s2){
+            t2=parent.getItemAtPosition(position).toString();
+        }
+        if(si3.getId() == R.id.s3){
+            t3=parent.getItemAtPosition(position).toString();
+        }
+        if(si4.getId() == R.id.s4){
+            t4=parent.getItemAtPosition(position).toString();
+        }
+        if(si5.getId() == R.id.s5){
+            t5=parent.getItemAtPosition(position).toString();
+        }
+        if(si6.getId() == R.id.s6){
+            t6=parent.getItemAtPosition(position).toString();
+        }
+        if(sei1.getId() == R.id.se1){
+            te1=parent.getItemAtPosition(position).toString();
+        }
+        if(sei2.getId() == R.id.se2){
+            te2=parent.getItemAtPosition(position).toString();
         }
 
     }
@@ -844,6 +1022,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 }
+
+
+/*
+
+ */
 
 
 

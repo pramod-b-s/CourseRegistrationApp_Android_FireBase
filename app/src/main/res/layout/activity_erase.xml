@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollvw88"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_height="fill_parent"
+        android:background="#CCFFFF">
+
+        <Spinner
+            android:id="@+id/SpinnerBranch1"
+            android:layout_height="wrap_content"
+            android:prompt="@string/branch_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/SpinnerYear1"
+            android:layout_height="wrap_content"
+            android:prompt="@string/year_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Erase"
+            android:id="@+id/ersbtn"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -6,59 +6,35 @@ package com.google.pramodbs.collegehelper;
 
 public class User {
     //must be public
-    public String Name,Branch,Year,CORE1,CORE2,CORE3,CORE4,CORE5,CORE6,ELECTIVE1,ELECTIVE2,regnumber,rollnumber;
+    public String Name,Branch,Year,regnumber,rollnumber,C1,C2,C3,C4,C5,C6,E1,E2;
 
     public User(){
 
     }
 
-    public User(String name,String branch,String year,String regnumber,String rollnumber,String c1, String c2,
-                String c3,String c4,String c5,String c6){
+    public User(String name,String branch,String year,String regnumber,String rollnumber,String C1,String C2,String C3,String C4,String C5,String C6,
+                String E1,String E2){
         this.Branch=branch;
         this.Year=year;
         this.Name=name;
         this.regnumber=regnumber;
         this.rollnumber=rollnumber;
-        this.CORE1=c1;
+        this.C1=C1;
+        this.C2=C2;
+        this.C3=C3;
+        this.C4=C4;
+        this.C5=C5;
+        this.C6=C6;
+        this.E1=E1;
+        this.E2=E2;
+        /*this.CORE1=c1;
         this.CORE2=c2;
         this.CORE3=c3;
         this.CORE4=c4;
         this.CORE5=c5;
-        this.CORE6=c6;
+        this.CORE6=c6;*/
     }
 
-    public User(String name,String branch,String year,String regnumber,String rollnumber,String c1, String c2,
-                String c3,String c4,String c5,String c6,String ce1){
-        this.Branch=branch;
-        this.Year=year;
-        this.Name=name;
-        this.regnumber=regnumber;
-        this.rollnumber=rollnumber;
-        this.CORE1=c1;
-        this.CORE2=c2;
-        this.CORE3=c3;
-        this.CORE4=c4;
-        this.CORE5=c5;
-        this.CORE6=c6;
-        this.ELECTIVE1=ce1;
-    }
-
-    public User(String name,String branch,String year,String regnumber,String rollnumber,String c1, String c2,
-                String c3,String c4,String c5,String c6,String ce1,String ce2){
-        this.Branch=branch;
-        this.Year=year;
-        this.Name=name;
-        this.regnumber=regnumber;
-        this.rollnumber=rollnumber;
-        this.CORE1=c1;
-        this.CORE2=c2;
-        this.CORE3=c3;
-        this.CORE4=c4;
-        this.CORE5=c5;
-        this.CORE6=c6;
-        this.ELECTIVE1=ce1;
-        this.ELECTIVE2=ce2;
-    }
 }
 
 

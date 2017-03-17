@@ -17,7 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enter following Details"
-            android:textSize="10pt">
+            android:textSize="15pt"
+            android:textColor="#000000">
         </TextView>
 
         <EditText
@@ -67,56 +68,122 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CORE Courses"
-            android:textSize="10pt">
+            android:textSize="12.5pt"
+            android:textColor="#000000">
         </TextView>
 
-        <CheckBox
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/c1"/>
+            android:id="@+id/c1"
+            android:textSize="10pt"/>
 
-        <CheckBox
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/s1"
             android:layout_height="wrap_content"
-            android:id="@+id/c2" />
+            android:prompt="@string/opts_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
 
-        <CheckBox
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/c3"/>
+            android:id="@+id/c2"
+            android:textSize="10pt"/>
 
-        <CheckBox
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/s2"
             android:layout_height="wrap_content"
-            android:id="@+id/c4"/>
+            android:prompt="@string/opts_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
 
-        <CheckBox
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/c5"/>
+            android:id="@+id/c3"
+            android:textSize="10pt"/>
 
-        <CheckBox
+        <Spinner
+            android:id="@+id/s3"
+            android:layout_height="wrap_content"
+            android:prompt="@string/opts_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/c6"/>
+            android:id="@+id/c4"
+            android:textSize="10pt"/>
+
+        <Spinner
+            android:id="@+id/s4"
+            android:layout_height="wrap_content"
+            android:prompt="@string/opts_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/c5"
+            android:textSize="10pt"/>
+
+        <Spinner
+            android:id="@+id/s5"
+            android:layout_height="wrap_content"
+            android:prompt="@string/opts_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/c6"
+            android:textSize="10pt"/>
+
+        <Spinner
+            android:id="@+id/s6"
+            android:layout_height="wrap_content"
+            android:prompt="@string/opts_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
 
         <TextView
             android:id="@+id/elective"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ELECTIVE Courses"
-            android:textSize="10pt">
+            android:textSize="12pt"
+            android:textColor="#000000">
         </TextView>
 
-        <CheckBox
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ce1"/>
+            android:id="@+id/ce1"
+            android:textSize="10pt"/>
 
-        <CheckBox
+        <Spinner
+            android:id="@+id/se1"
+            android:layout_height="wrap_content"
+            android:prompt="@string/opts_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ce2" />
+            android:id="@+id/ce2"
+            android:textSize="10pt"/>
+
+        <Spinner
+            android:id="@+id/se2"
+            android:layout_height="wrap_content"
+            android:prompt="@string/opts_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
 
         <Button
             android:layout_width="match_parent"
@@ -132,3 +199,4 @@
 
     </LinearLayout>
 </ScrollView>
+

@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">CollegeHelper</string>
+    <string name="app_name">CourseRegistration</string>
     <string name="degree_prompt">Choose Your Degree</string>
     <string name="year_prompt">Select Your Year</string>
     <string name="branch_prompt">Select Your Branch</string>
-
+    <string name="crs_prompt">Select Your course</string>
+    <string name="opts_prompt">Select Your option</string>
  <string name="some_text">
      Some North American Countries!
  </string>

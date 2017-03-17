@@ -26,13 +26,13 @@ public class OnLoginActivity extends AppCompatActivity implements View.OnClickLi
 
         nreg=(Button)findViewById(R.id.newreg);
         editdetails=(Button)findViewById(R.id.edit);
-        atten=(Button)findViewById(R.id.seeatt);
+        //atten=(Button)findViewById(R.id.seeatt);
         seecrs=(Button)findViewById(R.id.view);
         lgot=(Button)findViewById(R.id.logout);
 
         nreg.setOnClickListener(this);
         editdetails.setOnClickListener(this);
-        atten.setOnClickListener(this);
+        //atten.setOnClickListener(this);
         seecrs.setOnClickListener(this);
         lgot.setOnClickListener(this);
 
@@ -54,11 +54,11 @@ public class OnLoginActivity extends AppCompatActivity implements View.OnClickLi
             Intent newintedit=new Intent(this,EditDetails.class);
             startActivity(newintedit);
         }
-        if(v==atten){
+        /*if(v==atten){
             Toast.makeText(OnLoginActivity.this,"Please wait !",Toast.LENGTH_SHORT).show();
             Intent newintatt=new Intent(this,Attendance.class);
             startActivity(newintatt);
-        }
+        }*/
         if(v==seecrs){
             Toast.makeText(OnLoginActivity.this,"Your Courses !",Toast.LENGTH_SHORT).show();
             Intent newintatt=new Intent(this,Courses.class);

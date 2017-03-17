@@ -22,100 +22,69 @@
 
         <TextView
             android:textSize="30dp"
-            android:text="Attendance Report"
+            android:text="Attendance Status"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/disp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_marginTop="10dp" />
+        <Spinner
+            android:id="@+id/SpinnerBranch"
+            android:layout_height="wrap_content"
+            android:prompt="@string/branch_prompt"
+            android:layout_width="match_parent">
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/SpinnerYear"
+            android:layout_height="wrap_content"
+            android:prompt="@string/year_prompt"
+            android:layout_width="match_parent"/>
+
+        <Spinner
+            android:id="@+id/SpinnerNum"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:prompt="@string/crs_prompt">
+        </Spinner>
 
         <TextView
             android:layout_width="match_parent"
             android:textSize="20dp"
             android:layout_height="40dp"
             android:ems="10"
-            android:layout_marginTop="10dp"
+            android:text="Enter Subject Code"
+            android:layout_marginTop="5dp"
             android:id="@+id/crs1"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true" />
 
+        <EditText
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="enter code here(in caps)"
+            android:layout_marginTop="10dp"
+            android:id="@+id/rdcrs"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Find Attendance"
+            android:id="@+id/btn"/>
+
         <TextView
             android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_marginTop="5dp"
             android:layout_height="40dp"
             android:ems="10"
-            android:id="@+id/crs2"
-            android:layout_below="@+id/regemail"
-            android:layout_alignLeft="@+id/regemail"
-            android:layout_alignStart="@+id/regemail" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:ems="10"
-            android:textSize="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_height="40dp"
-            android:id="@+id/crs3"
-            android:layout_below="@+id/regpassword"
-            android:layout_alignLeft="@+id/regpassword"
-            android:layout_alignStart="@+id/regpassword" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:ems="10"
-            android:textSize="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_height="40dp"
-            android:id="@+id/crs4"
-            android:layout_below="@+id/regpassword"
-            android:layout_alignLeft="@+id/regpassword"
-            android:layout_alignStart="@+id/regpassword" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:ems="10"
-            android:textSize="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_height="40dp"
-            android:id="@+id/crs5"
-            android:layout_below="@+id/regpassword"
-            android:layout_alignLeft="@+id/regpassword"
-            android:layout_alignStart="@+id/regpassword" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:ems="10"
-            android:textSize="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_height="40dp"
-            android:id="@+id/crs6"
-            android:layout_below="@+id/regpassword"
-            android:layout_alignLeft="@+id/regpassword"
-            android:layout_alignStart="@+id/regpassword" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:ems="10"
-            android:layout_marginTop="20dp"
-            android:layout_height="40dp"
-            android:id="@+id/elec1"
-            android:textSize="20dp"
-            android:layout_below="@+id/regpassword"
-            android:layout_alignLeft="@+id/regpassword"
-            android:layout_alignStart="@+id/regpassword" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:ems="10"
-            android:textSize="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_height="40dp"
-            android:id="@+id/elec2"
-            android:layout_below="@+id/regpassword"
-            android:layout_alignLeft="@+id/regpassword"
-            android:layout_alignStart="@+id/regpassword" />
+            android:id="@+id/crs2" />
 
     </LinearLayout>
 
