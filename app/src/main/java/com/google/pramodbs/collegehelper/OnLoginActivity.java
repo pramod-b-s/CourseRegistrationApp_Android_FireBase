@@ -1,5 +1,5 @@
 package com.google.pramodbs.collegehelper;
-//LOC=41
+//LOC=72
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -54,11 +54,7 @@ public class OnLoginActivity extends AppCompatActivity implements View.OnClickLi
             Intent newintedit=new Intent(this,EditDetails.class);
             startActivity(newintedit);
         }
-        /*if(v==atten){
-            Toast.makeText(OnLoginActivity.this,"Please wait !",Toast.LENGTH_SHORT).show();
-            Intent newintatt=new Intent(this,Attendance.class);
-            startActivity(newintatt);
-        }*/
+
         if(v==seecrs){
             Toast.makeText(OnLoginActivity.this,"Your Courses !",Toast.LENGTH_SHORT).show();
             Intent newintatt=new Intent(this,Courses.class);

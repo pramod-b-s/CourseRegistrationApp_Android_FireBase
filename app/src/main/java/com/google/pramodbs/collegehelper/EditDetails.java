@@ -1,5 +1,5 @@
 package com.google.pramodbs.collegehelper;
-//LOC=786
+//LOC=486
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -198,251 +198,6 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
 
                 //Toast.makeText(EditDetails.this,readname+readbranch+readyear+cr1nm,Toast.LENGTH_SHORT).show();
 
-                if(readyear.equals(yearopts[0])){
-                    if(readbranch.equals(branchopts[0])) {
-                        mDatabase.child("CO students").child("2nd year").child(mUserId).removeValue();
-
-                        if(cr1nm.equals(crsopts[0])) {
-                            mDatabase.child("CO courses").child("2nd year").child("CO200").child(mUserId).removeValue();
-                        }
-                        if(cr2nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("2nd year").child("CO201").child(mUserId).removeValue();
-                        }
-                        if(cr3nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("2nd year").child("CO202").child(mUserId).removeValue();
-                        }
-                        if(cr4nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("2nd year").child("CO203").child(mUserId).removeValue();
-                        }
-                        if(cr5nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("2nd year").child("CO204").child(mUserId).removeValue();
-                        }
-                        if(cr6nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("2nd year").child("CO205").child(mUserId).removeValue();
-                        }
-
-                        if(el1nm.equals(crsopts[0])) {
-                            mDatabase.child("CO courses").child("2nd year").child("CO250").child(mUserId).removeValue();
-                        }
-                        if(el2nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("2nd year").child("CO251").child(mUserId).removeValue();
-                        }
-
-                    }
-                    if(readbranch.equals(branchopts[1])){
-                        mDatabase.child("EE students").child("2nd year").child(mUserId).removeValue();
-
-                        if(cr1nm.equals(crsopts[0])) {
-                            mDatabase.child("EE courses").child("2nd year").child("EE200").child(mUserId).removeValue();
-                        }
-                        if(cr2nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("2nd year").child("EE201").child(mUserId).removeValue();
-                        }
-                        if(cr3nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("2nd year").child("EE202").child(mUserId).removeValue();
-                        }
-                        if(cr4nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("2nd year").child("EE203").child(mUserId).removeValue();
-                        }
-                        if(cr5nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("2nd year").child("EE204").child(mUserId).removeValue();
-                        }
-                        if(cr6nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("2nd year").child("EE205").child(mUserId).removeValue();
-                        }
-
-                        if(el1nm.equals(crsopts[0])) {
-                            mDatabase.child("EE courses").child("2nd year").child("EE250").child(mUserId).removeValue();
-                        }
-                        if(el2nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("2nd year").child("EE251").child(mUserId).removeValue();
-                        }
-
-                    }
-                    if(readbranch.equals(branchopts[2])){
-                        mDatabase.child("ME students").child("2nd year").child(mUserId).removeValue();
-
-                        if(cr1nm.equals(crsopts[0])) {
-                            mDatabase.child("ME courses").child("2nd year").child("ME200").child(mUserId).removeValue();
-                        }
-                        if(cr2nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("2nd year").child("ME201").child(mUserId).removeValue();
-                        }
-                        if(cr3nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("2nd year").child("ME202").child(mUserId).removeValue();
-                        }
-                        if(cr4nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("2nd year").child("ME203").child(mUserId).removeValue();
-                        }
-                        if(cr5nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("2nd year").child("ME204").child(mUserId).removeValue();
-                        }
-                        if(cr6nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("2nd year").child("ME205").child(mUserId).removeValue();
-                        }
-
-                        if(el1nm.equals(crsopts[0])) {
-                            mDatabase.child("ME courses").child("2nd year").child("ME250").child(mUserId).removeValue();
-                        }
-                        if(el2nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("2nd year").child("ME251").child(mUserId).removeValue();
-                        }
-                    }
-                }
-
-                if(readyear.equals(yearopts[1])){
-                    if(readbranch.equals(branchopts[0])){
-                        mDatabase.child("CO students").child("3rd year").child(mUserId).removeValue();
-
-                        if(cr1nm.equals(crsopts[0])) {
-                            mDatabase.child("CO courses").child("3rd year").child("CO300").child(mUserId).removeValue();
-                        }
-                        if(cr2nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("3rd year").child("CO301").child(mUserId).removeValue();
-                        }
-                        if(cr3nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("3rd year").child("CO302").child(mUserId).removeValue();
-                        }
-                        if(cr4nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("3rd year").child("CO303").child(mUserId).removeValue();
-                        }
-                        if(cr5nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("3rd year").child("CO304").child(mUserId).removeValue();
-                        }
-
-                        if(el1nm.equals(crsopts[0])) {
-                            mDatabase.child("CO courses").child("3rd year").child("CO350").child(mUserId).removeValue();
-                        }
-                        if(el2nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("3rd year").child("CO351").child(mUserId).removeValue();
-                        }
-                    }
-                    if(readbranch.equals(branchopts[1])){
-                        mDatabase.child("EE students").child("3rd year").child(mUserId).removeValue();
-
-                        if(cr1nm.equals(crsopts[0])) {
-                            mDatabase.child("EE courses").child("3rd year").child("EE300").child(mUserId).removeValue();
-                        }
-                        if(cr2nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("3rd year").child("EE301").child(mUserId).removeValue();
-                        }
-                        if(cr3nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("3rd year").child("EE302").child(mUserId).removeValue();
-                        }
-                        if(cr4nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("3rd year").child("EE303").child(mUserId).removeValue();
-                        }
-                        if(cr5nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("3rd year").child("EE304").child(mUserId).removeValue();
-                        }
-
-                        if(el1nm.equals(crsopts[0])) {
-                            mDatabase.child("EE courses").child("3rd year").child("EE350").child(mUserId).removeValue();
-                        }
-                        if(el2nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("3rd year").child("EE351").child(mUserId).removeValue();
-                        }
-                    }
-                    if(readbranch.equals(branchopts[2])){
-                        mDatabase.child("ME students").child("3rd year").child(mUserId).removeValue();
-
-                        if(cr1nm.equals(crsopts[0])) {
-                            mDatabase.child("ME courses").child("3rd year").child("ME300").child(mUserId).removeValue();
-                        }
-                        if(cr2nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("3rd year").child("ME301").child(mUserId).removeValue();
-                        }
-                        if(cr3nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("3rd year").child("ME302").child(mUserId).removeValue();
-                        }
-                        if(cr4nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("3rd year").child("ME303").child(mUserId).removeValue();
-                        }
-                        if(cr5nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("3rd year").child("ME304").child(mUserId).removeValue();
-                        }
-
-                        if(el1nm.equals(crsopts[0])) {
-                            mDatabase.child("ME courses").child("3rd year").child("ME350").child(mUserId).removeValue();
-                        }
-                        if(el2nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("3rd year").child("ME351").child(mUserId).removeValue();
-                        }
-                    }
-                }
-
-                if(readyear.equals(yearopts[2])){
-                    if(readbranch.equals(branchopts[0])){
-                        mDatabase.child("CO students").child("4th year").child(mUserId).removeValue();
-
-                        if(cr1nm.equals(crsopts[0])) {
-                            mDatabase.child("CO courses").child("4th year").child("CO400").child(mUserId).removeValue();
-                        }
-                        if(cr2nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("4th year").child("CO401").child(mUserId).removeValue();
-                        }
-                        if(cr3nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("4th year").child("CO402").child(mUserId).removeValue();
-                        }
-                        if(cr4nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("4th year").child("CO403").child(mUserId).removeValue();
-                        }
-
-                        if(el1nm.equals(crsopts[0])) {
-                            mDatabase.child("CO courses").child("4th year").child("CO450").child(mUserId).removeValue();
-                        }
-                        if(el2nm.equals(crsopts[0])){
-                            mDatabase.child("CO courses").child("4th year").child("CO451").child(mUserId).removeValue();
-                        }
-                    }
-                    if(readbranch.equals(branchopts[1])){
-                        mDatabase.child("EE students").child("4th year").child(mUserId).removeValue();
-
-                        if(cr1nm.equals(crsopts[0])) {
-                            mDatabase.child("EE courses").child("4th year").child("EE400").child(mUserId).removeValue();
-                        }
-                        if(cr2nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("4th year").child("EE401").child(mUserId).removeValue();
-                        }
-                        if(cr3nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("4th year").child("EE402").child(mUserId).removeValue();
-                        }
-                        if(cr4nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("4th year").child("EE403").child(mUserId).removeValue();
-                        }
-
-                        if(el1nm.equals(crsopts[0])) {
-                            mDatabase.child("EE courses").child("4th year").child("EE450").child(mUserId).removeValue();
-                        }
-                        if(el2nm.equals(crsopts[0])){
-                            mDatabase.child("EE courses").child("4th year").child("EE451").child(mUserId).removeValue();
-                        }
-                    }
-                    if(readbranch.equals(branchopts[2])){
-                        mDatabase.child("ME students").child("4th year").child(mUserId).removeValue();
-
-                        if(cr1nm.equals(crsopts[0])) {
-                            mDatabase.child("ME courses").child("4th year").child("ME400").child(mUserId).removeValue();
-                        }
-                        if(cr2nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("4th year").child("ME401").child(mUserId).removeValue();
-                        }
-                        if(cr3nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("4th year").child("ME402").child(mUserId).removeValue();
-                        }
-                        if(cr4nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("4th year").child("ME403").child(mUserId).removeValue();
-                        }
-
-                        if(el1nm.equals(crsopts[0])) {
-                            mDatabase.child("ME courses").child("4th year").child("ME450").child(mUserId).removeValue();
-                        }
-                        if(el2nm.equals(crsopts[0])){
-                            mDatabase.child("ME courses").child("4th year").child("ME451").child(mUserId).removeValue();
-                        }
-                    }
-                }
-
             }
 
             @Override
@@ -453,12 +208,256 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
         };
 
         mDatabase.child("users").child(mUserId).addListenerForSingleValueEvent(postListener);
-        //mDatabase.child("users").child(mUserId).removeEventListener(postListener);
-        //mDatabase.child("users").child(mUserId).removeValue();
 
-        //Toast.makeText(this, readbranch+readyear+cr1nm, Toast.LENGTH_SHORT).show();
+    }
 
-        //mDatabase.child("users").child(mUserId).removeEventListener(postListener);
+    public void saveinfo(){
+
+        if(readyear.equals(yearopts[0])){
+            if(readbranch.equals(branchopts[0])) {
+                mDatabase.child("CO students").child("2nd year").child(mUserId).removeValue();
+
+                if(cr1nm.equals(crsopts[0])) {
+                    mDatabase.child("CO courses").child("2nd year").child("CO200").child(mUserId).removeValue();
+                }
+                if(cr2nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("2nd year").child("CO201").child(mUserId).removeValue();
+                }
+                if(cr3nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("2nd year").child("CO202").child(mUserId).removeValue();
+                }
+                if(cr4nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("2nd year").child("CO203").child(mUserId).removeValue();
+                }
+                if(cr5nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("2nd year").child("CO204").child(mUserId).removeValue();
+                }
+                if(cr6nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("2nd year").child("CO205").child(mUserId).removeValue();
+                }
+
+                if(el1nm.equals(crsopts[0])) {
+                    mDatabase.child("CO courses").child("2nd year").child("CO250").child(mUserId).removeValue();
+                }
+                if(el2nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("2nd year").child("CO251").child(mUserId).removeValue();
+                }
+
+            }
+            if(readbranch.equals(branchopts[1])){
+                mDatabase.child("EE students").child("2nd year").child(mUserId).removeValue();
+
+                if(cr1nm.equals(crsopts[0])) {
+                    mDatabase.child("EE courses").child("2nd year").child("EE200").child(mUserId).removeValue();
+                }
+                if(cr2nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("2nd year").child("EE201").child(mUserId).removeValue();
+                }
+                if(cr3nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("2nd year").child("EE202").child(mUserId).removeValue();
+                }
+                if(cr4nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("2nd year").child("EE203").child(mUserId).removeValue();
+                }
+                if(cr5nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("2nd year").child("EE204").child(mUserId).removeValue();
+                }
+                if(cr6nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("2nd year").child("EE205").child(mUserId).removeValue();
+                }
+
+                if(el1nm.equals(crsopts[0])) {
+                    mDatabase.child("EE courses").child("2nd year").child("EE250").child(mUserId).removeValue();
+                }
+                if(el2nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("2nd year").child("EE251").child(mUserId).removeValue();
+                }
+
+            }
+            if(readbranch.equals(branchopts[2])){
+                mDatabase.child("ME students").child("2nd year").child(mUserId).removeValue();
+
+                if(cr1nm.equals(crsopts[0])) {
+                    mDatabase.child("ME courses").child("2nd year").child("ME200").child(mUserId).removeValue();
+                }
+                if(cr2nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("2nd year").child("ME201").child(mUserId).removeValue();
+                }
+                if(cr3nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("2nd year").child("ME202").child(mUserId).removeValue();
+                }
+                if(cr4nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("2nd year").child("ME203").child(mUserId).removeValue();
+                }
+                if(cr5nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("2nd year").child("ME204").child(mUserId).removeValue();
+                }
+                if(cr6nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("2nd year").child("ME205").child(mUserId).removeValue();
+                }
+
+                if(el1nm.equals(crsopts[0])) {
+                    mDatabase.child("ME courses").child("2nd year").child("ME250").child(mUserId).removeValue();
+                }
+                if(el2nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("2nd year").child("ME251").child(mUserId).removeValue();
+                }
+            }
+        }
+
+        if(readyear.equals(yearopts[1])){
+            if(readbranch.equals(branchopts[0])){
+                mDatabase.child("CO students").child("3rd year").child(mUserId).removeValue();
+
+                if(cr1nm.equals(crsopts[0])) {
+                    mDatabase.child("CO courses").child("3rd year").child("CO300").child(mUserId).removeValue();
+                }
+                if(cr2nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("3rd year").child("CO301").child(mUserId).removeValue();
+                }
+                if(cr3nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("3rd year").child("CO302").child(mUserId).removeValue();
+                }
+                if(cr4nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("3rd year").child("CO303").child(mUserId).removeValue();
+                }
+                if(cr5nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("3rd year").child("CO304").child(mUserId).removeValue();
+                }
+
+                if(el1nm.equals(crsopts[0])) {
+                    mDatabase.child("CO courses").child("3rd year").child("CO350").child(mUserId).removeValue();
+                }
+                if(el2nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("3rd year").child("CO351").child(mUserId).removeValue();
+                }
+            }
+            if(readbranch.equals(branchopts[1])){
+                mDatabase.child("EE students").child("3rd year").child(mUserId).removeValue();
+
+                if(cr1nm.equals(crsopts[0])) {
+                    mDatabase.child("EE courses").child("3rd year").child("EE300").child(mUserId).removeValue();
+                }
+                if(cr2nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("3rd year").child("EE301").child(mUserId).removeValue();
+                }
+                if(cr3nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("3rd year").child("EE302").child(mUserId).removeValue();
+                }
+                if(cr4nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("3rd year").child("EE303").child(mUserId).removeValue();
+                }
+                if(cr5nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("3rd year").child("EE304").child(mUserId).removeValue();
+                }
+
+                if(el1nm.equals(crsopts[0])) {
+                    mDatabase.child("EE courses").child("3rd year").child("EE350").child(mUserId).removeValue();
+                }
+                if(el2nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("3rd year").child("EE351").child(mUserId).removeValue();
+                }
+            }
+            if(readbranch.equals(branchopts[2])){
+                mDatabase.child("ME students").child("3rd year").child(mUserId).removeValue();
+
+                if(cr1nm.equals(crsopts[0])) {
+                    mDatabase.child("ME courses").child("3rd year").child("ME300").child(mUserId).removeValue();
+                }
+                if(cr2nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("3rd year").child("ME301").child(mUserId).removeValue();
+                }
+                if(cr3nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("3rd year").child("ME302").child(mUserId).removeValue();
+                }
+                if(cr4nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("3rd year").child("ME303").child(mUserId).removeValue();
+                }
+                if(cr5nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("3rd year").child("ME304").child(mUserId).removeValue();
+                }
+
+                if(el1nm.equals(crsopts[0])) {
+                    mDatabase.child("ME courses").child("3rd year").child("ME350").child(mUserId).removeValue();
+                }
+                if(el2nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("3rd year").child("ME351").child(mUserId).removeValue();
+                }
+            }
+        }
+
+        if(readyear.equals(yearopts[2])){
+            if(readbranch.equals(branchopts[0])){
+                mDatabase.child("CO students").child("4th year").child(mUserId).removeValue();
+
+                if(cr1nm.equals(crsopts[0])) {
+                    mDatabase.child("CO courses").child("4th year").child("CO400").child(mUserId).removeValue();
+                }
+                if(cr2nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("4th year").child("CO401").child(mUserId).removeValue();
+                }
+                if(cr3nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("4th year").child("CO402").child(mUserId).removeValue();
+                }
+                if(cr4nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("4th year").child("CO403").child(mUserId).removeValue();
+                }
+
+                if(el1nm.equals(crsopts[0])) {
+                    mDatabase.child("CO courses").child("4th year").child("CO450").child(mUserId).removeValue();
+                }
+                if(el2nm.equals(crsopts[0])){
+                    mDatabase.child("CO courses").child("4th year").child("CO451").child(mUserId).removeValue();
+                }
+            }
+            if(readbranch.equals(branchopts[1])){
+                mDatabase.child("EE students").child("4th year").child(mUserId).removeValue();
+
+                if(cr1nm.equals(crsopts[0])) {
+                    mDatabase.child("EE courses").child("4th year").child("EE400").child(mUserId).removeValue();
+                }
+                if(cr2nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("4th year").child("EE401").child(mUserId).removeValue();
+                }
+                if(cr3nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("4th year").child("EE402").child(mUserId).removeValue();
+                }
+                if(cr4nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("4th year").child("EE403").child(mUserId).removeValue();
+                }
+
+                if(el1nm.equals(crsopts[0])) {
+                    mDatabase.child("EE courses").child("4th year").child("EE450").child(mUserId).removeValue();
+                }
+                if(el2nm.equals(crsopts[0])){
+                    mDatabase.child("EE courses").child("4th year").child("EE451").child(mUserId).removeValue();
+                }
+            }
+            if(readbranch.equals(branchopts[2])){
+                mDatabase.child("ME students").child("4th year").child(mUserId).removeValue();
+
+                if(cr1nm.equals(crsopts[0])) {
+                    mDatabase.child("ME courses").child("4th year").child("ME400").child(mUserId).removeValue();
+                }
+                if(cr2nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("4th year").child("ME401").child(mUserId).removeValue();
+                }
+                if(cr3nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("4th year").child("ME402").child(mUserId).removeValue();
+                }
+                if(cr4nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("4th year").child("ME403").child(mUserId).removeValue();
+                }
+
+                if(el1nm.equals(crsopts[0])) {
+                    mDatabase.child("ME courses").child("4th year").child("ME450").child(mUserId).removeValue();
+                }
+                if(el2nm.equals(crsopts[0])){
+                    mDatabase.child("ME courses").child("4th year").child("ME451").child(mUserId).removeValue();
+                }
+            }
+        }
+
     }
 
     @Override
@@ -471,6 +470,7 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
             startActivity(gotomain);
         }
         if (v == save) {
+            saveinfo();
             mDatabase.child("users").child(mUserId).removeEventListener(postListener);
             Toast.makeText(this, "Register again !", Toast.LENGTH_SHORT).show();
             finish();

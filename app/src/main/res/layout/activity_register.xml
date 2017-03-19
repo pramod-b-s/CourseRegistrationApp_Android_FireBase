@@ -72,6 +72,7 @@
         android:textColorHint="#FFFFFF"
         />
 
+
     <Button
         android:text="Register"
         android:id="@+id/regbutton"

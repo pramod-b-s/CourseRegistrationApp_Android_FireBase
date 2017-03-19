@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         passwd=(EditText)findViewById(R.id.password);
         regsignin=(TextView)findViewById(R.id.txtview);
 
-        email.setText("@nitk.ac.in");
+        email.setText("@nitk.edu.in");
 
         progress=new ProgressDialog(this);
 

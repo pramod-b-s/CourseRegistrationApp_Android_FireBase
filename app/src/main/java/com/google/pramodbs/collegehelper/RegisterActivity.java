@@ -1,5 +1,5 @@
 package com.google.pramodbs.collegehelper;
-//LOC=141
+//LOC=123
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -20,6 +20,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -28,8 +30,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText regpasswd;
     private EditText reregpwd;
     private TextView signin;
-    //private EditText regname;
-    //private EditText regbranch;
+    private Character c;
+    private Integer f=0,f1=0;
 
     private ProgressDialog progress;
 
@@ -40,16 +42,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_register);
 
-            /*if(firebaseauth.getCurrentUser()!=null){
-                //profile activity
-                /*Intent gotoprofile=new Intent(getApplicationContext(),ProfileActivity.class);
-                finish();
-                startActivity(gotoprofile);
-            }*/
-
             regbtn=(Button)findViewById(R.id.regbutton);
             regemail=(EditText)findViewById(R.id.regemail);
-            regemail.setText("@nitk.ac.in");
+            regemail.setText("@nitk.edu.in");
             //regname=(EditText)findViewById(R.id.nametext);
             //regbranch=(EditText)findViewById(R.id.branchtext);
             regpasswd=(EditText)findViewById(R.id.regpassword);
@@ -66,63 +61,84 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
 
-        private void registeruser(){
-            String emailid=regemail.getText().toString();
-            final String passwdentered=regpasswd.getText().toString();
-            String repasswdentered=reregpwd.getText().toString();
-            //String entname=regname.getText().toString();
-            //String entbranch=regbranch.getText().toString();
+        private void registeruser() {
+            String emailid = regemail.getText().toString();
+            final String passwdentered = regpasswd.getText().toString();
+            String repasswdentered = reregpwd.getText().toString();
 
-            if(emailid.endsWith("@nitk.ac.in")==false){
-                Toast.makeText(this,"Enter NITK email ID to proceed !",Toast.LENGTH_SHORT).show();
+            if (emailid.endsWith("@nitk.edu.in") == false) {
+                Toast.makeText(this, "Enter NITK email ID to proceed !", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(TextUtils.isEmpty(emailid)){
-                Toast.makeText(this,"Enter email ID to proceed !",Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(emailid)) {
+                Toast.makeText(this, "Enter email ID to proceed !", Toast.LENGTH_SHORT).show();
                 return;
             }
-            /*if(TextUtils.isEmpty(entbranch)){
-                Toast.makeText(this,"Enter Branch to proceed !",Toast.LENGTH_SHORT).show();
+
+            if (TextUtils.isEmpty(passwdentered)) {
+                Toast.makeText(this, "Enter password to proceed !", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(TextUtils.isEmpty(entname)){
-                Toast.makeText(this,"Enter Name to proceed !",Toast.LENGTH_SHORT).show();
-                return;
-            }*/
-            if(TextUtils.isEmpty(passwdentered)){
-                Toast.makeText(this,"Enter password to proceed !",Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(repasswdentered)) {
+                Toast.makeText(this, "Enter password to proceed !", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(TextUtils.isEmpty(repasswdentered)){
-                Toast.makeText(this,"Enter password to proceed !",Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if(!(passwdentered.equals(repasswdentered))){
-                Toast.makeText(this,"Re-Enter password correctly !",Toast.LENGTH_SHORT).show();
+            if (!(passwdentered.equals(repasswdentered))) {
+                Toast.makeText(this, "Re-Enter password correctly !", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             progress.setMessage("Breathe In.. Breathe Out");
             progress.show();
 
-            firebaseauth.createUserWithEmailAndPassword(emailid,passwdentered)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            progress.dismiss();
-                            if(task.isSuccessful()){
-                                Toast.makeText(RegisterActivity.this,"User registered successfully !",Toast.LENGTH_SHORT).show();
-                            }
-                            else{
-                                if(passwdentered.length()<6){
-                                    Toast.makeText(RegisterActivity.this,"Password should be of atleast 6 characters",Toast.LENGTH_SHORT).show();
+            for (char c : passwdentered.toCharArray()) {
+                if (c > 32 && c < 48) {
+                    f = 1;
+                }
+                if (c > 57 && c < 65) {
+                    f = 1;
+                }
+                if (c > 122 && c < 126) {
+                    f = 1;
+                }
+                if (c > 64 && c < 91) {
+                    f1 = 1;
+                }
+                if (f == 1 && f1 == 1) {
+                    break;
+                }
+            }
+            if (f == 0 || f1 == 0) {
+                Toast.makeText(RegisterActivity.this, "Password should contain atleast one special character and one capital letter", Toast.LENGTH_SHORT).show();
+                progress.dismiss();
+            } else {
+                firebaseauth.createUserWithEmailAndPassword(emailid, passwdentered)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                progress.dismiss();
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(RegisterActivity.this, "User registered successfully !", Toast.LENGTH_SHORT).show();
+
+                                    Toast.makeText(RegisterActivity.this,"Sign In !",Toast.LENGTH_SHORT).show();
+                                    Intent gototlogin=new Intent(RegisterActivity.this,MainActivity.class);
+                                    startActivity(gototlogin);
+                                } else {
+                                /*Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+                                Matcher m = p.matcher(passwdentered);
+                                boolean b = m.find();
+                                if(b==false){
+                                    Toast.makeText(RegisterActivity.this,"Password should contain special character",Toast.LENGTH_SHORT).show();
+                                }*/
+                                    if (passwdentered.length() < 6) {
+                                        Toast.makeText(RegisterActivity.this, "Password should be of atleast 6 characters", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(RegisterActivity.this, "User with this Email ID already exists !", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                                else {
-                                    Toast.makeText(RegisterActivity.this, "User with this Email ID already exists !", Toast.LENGTH_SHORT).show();
-                                }
                             }
-                        }
-                    });
+                        });
+            }
         }
 
         @Override

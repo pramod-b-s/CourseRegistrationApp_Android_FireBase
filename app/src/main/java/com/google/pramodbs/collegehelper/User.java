@@ -1,5 +1,5 @@
 package com.google.pramodbs.collegehelper;
-//LOC=65
+//LOC=35
 /**
  * Created by Pramod B.S on 25-02-2017.
  */
@@ -27,12 +27,6 @@ public class User {
         this.C6=C6;
         this.E1=E1;
         this.E2=E2;
-        /*this.CORE1=c1;
-        this.CORE2=c2;
-        this.CORE3=c3;
-        this.CORE4=c4;
-        this.CORE5=c5;
-        this.CORE6=c6;*/
     }
 
 }
