@@ -77,5 +77,13 @@
         android:layout_marginTop="20dp"
         android:textColor="#FF0000" />
 
+    <TextView
+        android:text="Bored ? Check this out !"
+        android:id="@+id/game1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:textColor="#00FFFF" />
+
 </LinearLayout>
 </ScrollView>

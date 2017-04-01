@@ -48,13 +48,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Query queryref;
 
     private TextView title,cores,electives;
-    private EditText name,roll,reg;
-    private Spinner year,branch,sp1,sp2,sp3,sp4,sp5,sp6,spe1,spe2;
+
+    private Spinner sp1,sp2,sp3,sp4,sp5,sp6,spe1,spe2;
+    private static String cr1nm,cr2nm,cr3nm,cr4nm,cr5nm,cr6nm,el1nm,el2nm;
+
     private String yearchosen,branchchosen,t1,t2,t3,t4,t5,t6,te1,te2;
 
     private TextView b1,b2,b3,b4,b5,b6,be1,be2;
 
-    private String[] yearopts,branchopts,crsopts,c2opts,c3opts,c4opts,c2eopts,c3eopts,c4eopts,e2opts,e3opts,
+    private String[] crsopts,c2opts,c3opts,c4opts,c2eopts,c3eopts,c4eopts,e2opts,e3opts,
     e4opts,e2eopts,e3eopts,e4eopts,m2opts,m3opts,m4opts,m2eopts,m3eopts,m4eopts,c2fac,c3fac,c4fac,e2fac,e3fac,e4fac,
     m2fac,m3fac,m4fac;
     private ValueEventListener postListener;
@@ -62,7 +64,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private String checkreg;
 
     private Firebase mref;
-    private String readname,readrollno,readregno;
+    private String readname,readrollno,readregno,readbranch,readyear;
 
     int lock=0,lock1=0;
     //private String[] degopts;
@@ -89,12 +91,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         be1=(TextView) findViewById(R.id.ce1);
         be2=(TextView) findViewById(R.id.ce2);
 
-        this.yearopts = new String[] {
-                "Second Year", "Third Year", "Fourth Year"
-        };
-        this.branchopts = new String[] {
-                "Computer Science and Engineering", "Electrical and Electronic Engineering", "Mechanical Engineering"
-        };
+
         this.crsopts=new String[]{
                 "Undertake","Drop"
         };
@@ -159,133 +156,60 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 "ME450  --  KJ", "ME451  -- AR"
         };
 
-        year=(Spinner)findViewById(R.id.SpinnerYear);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, yearopts);
-        year.setAdapter(adapter);
-        year.setOnItemSelectedListener(this);
 
-        branch=(Spinner)findViewById(R.id.SpinnerBranch);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, branchopts);
-        branch.setAdapter(adapter1);
-        branch.setOnItemSelectedListener(this);
 
         logoutbtn.setOnClickListener(this);
         save.setOnClickListener(this);
         regbutton.setOnClickListener(this);
         //mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         mUserId=user.getUid();
-        title=(TextView)findViewById(R.id.titlefield);
+
         cores=(TextView)findViewById(R.id.core);
         electives=(TextView)findViewById(R.id.elective);
-        name=(EditText) findViewById(R.id.namefield);
-        roll=(EditText) findViewById(R.id.rollno);
-        reg=(EditText) findViewById(R.id.regno);
 
-        //mDatabase.child("users").child(mUserId).removeEventListener(postListener);
+        mDatabase.child("users").child(mUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                Student post = dataSnapshot.getValue(Student.class);
+                readname=post.name;
+                readregno=post.regno;
+                readrollno=post.rollno;
+                readbranch=post.branch;
+                readyear=post.year;
 
-        mDatabase.child("CO students").child("2nd year").child(mUserId).removeValue();
-        mDatabase.child("CO students").child("3rd year").child(mUserId).removeValue();
-        mDatabase.child("CO students").child("4th year").child(mUserId).removeValue();
+                yearchosen=readyear;
+                branchchosen=readbranch;
 
-        mDatabase.child("CO courses").child("2nd year").child("CO200").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("2nd year").child("CO201").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("2nd year").child("CO202").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("2nd year").child("CO203").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("2nd year").child("CO204").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("2nd year").child("CO205").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("2nd year").child("CO250").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("2nd year").child("CO251").child(mUserId).removeValue();
+                Toast.makeText(ProfileActivity.this,"Welcome back "+readname,Toast.LENGTH_SHORT).show();
 
-        mDatabase.child("CO courses").child("3rd year").child("CO300").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("3rd year").child("CO301").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("3rd year").child("CO302").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("3rd year").child("CO303").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("3rd year").child("CO304").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("3rd year").child("CO350").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("3rd year").child("CO351").child(mUserId).removeValue();
+                /*if(readname!=null){
+                    mDatabase.child("users").child(mUserId).removeEventListener(this);
+                }*/
+                //Toast.makeText(EditDetails.this,readname+readbranch+readyear+cr1nm,Toast.LENGTH_SHORT).show();
 
-        mDatabase.child("CO courses").child("4th year").child("CO400").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("4th year").child("CO401").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("4th year").child("CO402").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("4th year").child("CO403").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("4th year").child("CO450").child(mUserId).removeValue();
-        mDatabase.child("CO courses").child("4th year").child("CO451").child(mUserId).removeValue();
+            }
 
-
-        mDatabase.child("EE students").child("2nd year").child(mUserId).removeValue();
-        mDatabase.child("EE students").child("3rd year").child(mUserId).removeValue();
-        mDatabase.child("EE students").child("4th year").child(mUserId).removeValue();
-
-        mDatabase.child("EE courses").child("2nd year").child("EE200").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("2nd year").child("EE201").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("2nd year").child("EE202").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("2nd year").child("EE203").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("2nd year").child("EE204").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("2nd year").child("EE205").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("2nd year").child("EE250").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("2nd year").child("EE251").child(mUserId).removeValue();
-
-        mDatabase.child("EE courses").child("3rd year").child("EE300").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("3rd year").child("EE301").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("3rd year").child("EE302").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("3rd year").child("EE303").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("3rd year").child("EE304").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("3rd year").child("EE305").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("3rd year").child("EE350").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("3rd year").child("EE351").child(mUserId).removeValue();
-
-        mDatabase.child("EE courses").child("4th year").child("EE400").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("4th year").child("EE401").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("4th year").child("EE402").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("4th year").child("EE403").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("4th year").child("EE450").child(mUserId).removeValue();
-        mDatabase.child("EE courses").child("4th year").child("EE451").child(mUserId).removeValue();
-
-
-        mDatabase.child("ME students").child("2nd year").child(mUserId).removeValue();
-        mDatabase.child("ME students").child("3rd year").child(mUserId).removeValue();
-        mDatabase.child("ME students").child("4th year").child(mUserId).removeValue();
-
-        mDatabase.child("ME courses").child("2nd year").child("ME200").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("2nd year").child("ME201").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("2nd year").child("ME202").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("2nd year").child("ME203").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("2nd year").child("ME204").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("2nd year").child("ME205").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("2nd year").child("ME250").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("2nd year").child("ME251").child(mUserId).removeValue();
-
-        mDatabase.child("ME courses").child("3rd year").child("ME300").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("3rd year").child("ME301").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("3rd year").child("ME302").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("3rd year").child("ME303").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("3rd year").child("ME304").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("3rd year").child("ME350").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("3rd year").child("ME351").child(mUserId).removeValue();
-
-        mDatabase.child("ME courses").child("4th year").child("ME400").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("4th year").child("ME401").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("4th year").child("ME402").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("4th year").child("ME403").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("4th year").child("ME450").child(mUserId).removeValue();
-        mDatabase.child("ME courses").child("4th year").child("ME451").child(mUserId).removeValue();
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                // ...
+            }
+        });
 
     }
 
     private void saveuserinfo(){
 
-        String namestr = name.getText().toString();
-        String regchosen = reg.getText().toString();
-        String rollchosen = roll.getText().toString();
-
+        String namestr =readname;
+        String regchosen =readregno;
+        String rollchosen =readrollno;
         Student student=new Student(namestr,rollchosen,regchosen,branchchosen,yearchosen);
 
         //FOR COMPS
-            if (branchchosen == "Computer Science and Engineering") {
+            if (branchchosen.equals("Computer Science and Engineering")) {
                 //FOR SECOND YEAR
-                if (yearchosen == "Second Year") {
+                if (yearchosen.equals("Second Year")) {
                     if(t1==crsopts[0]) {
                         mDatabase.child("CO courses").child("2nd year").child("CO200").child(mUserId).setValue(student);
                     }
@@ -326,11 +250,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,t6,te1,te2);
 
-                    mDatabase.child("users").child(mUserId).setValue(user);
+                    mDatabase.child("USERS").child(mUserId).setValue(user);
 
                 }
                 //FOR THIRD YEAR
-                if (yearchosen == "Third Year") {
+                if (yearchosen.equals("Third Year")) {
                     if(t1==crsopts[0]){
                         mDatabase.child("CO courses").child("3rd year").child("CO300").child(mUserId).setValue(student);
                     }
@@ -367,10 +291,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,"",te1,te2);
 
-                    mDatabase.child("users").child(mUserId).setValue(user);
+                    mDatabase.child("USERS").child(mUserId).setValue(user);
                 }
                 //FOR FINAL YEAR
-                if (yearchosen == "Fourth Year") {
+                if (yearchosen.equals("Fourth Year")) {
                     if(t1==crsopts[0]){
                         mDatabase.child("CO courses").child("4th year").child("CO400").child(mUserId).setValue(student);
                     }
@@ -403,15 +327,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,"","",te1,te2);
 
-                    mDatabase.child("users").child(mUserId).setValue(user);
+                    mDatabase.child("USERS").child(mUserId).setValue(user);
                 }
             }
 
 
             //FOR EEE
-            if (branchchosen == "Electrical and Electronic Engineering") {
+            if (branchchosen.equals("Electrical and Electronic Engineering")) {
                 //FOR SECOND YEAR
-                if (yearchosen == "Second Year") {
+                if (yearchosen.equals("Second Year")) {
                     if(t1==crsopts[0]) {
                         mDatabase.child("EE courses").child("2nd year").child("EE200").child(mUserId).setValue(student);
                     }
@@ -452,10 +376,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,t6,te1,te2);
 
-                    mDatabase.child("users").child(mUserId).setValue(user);
+                    mDatabase.child("USERS").child(mUserId).setValue(user);
                 }
                 //FOR THIRD YEAR
-                if (yearchosen == "Third Year") {
+                if (yearchosen.equals("Third Year")) {
                     if(t1==crsopts[0]){
                         mDatabase.child("EE courses").child("3rd year").child("EE300").child(mUserId).setValue(student);
                     }
@@ -492,10 +416,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,"",te1,te2);
 
-                    mDatabase.child("users").child(mUserId).setValue(user);
+                    mDatabase.child("USERS").child(mUserId).setValue(user);
                 }
                 //FOR FINAL YEAR
-                if (yearchosen == "Fourth Year") {
+                if (yearchosen.equals("Fourth Year")) {
                     if(t1==crsopts[0]){
                         mDatabase.child("EE courses").child("4th year").child("EE400").child(mUserId).setValue(student);
                     }
@@ -528,15 +452,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,"","",te1,te2);
 
-                    mDatabase.child("users").child(mUserId).setValue(user);
+                    mDatabase.child("USERS").child(mUserId).setValue(user);
                 }
             }
 
 
             //FOR MECH
-            if (branchchosen == "Mechanical Engineering") {
+            if (branchchosen.equals("Mechanical Engineering")) {
                 //FOR SECOND YEAR
-                if (yearchosen == "Second Year") {
+                if (yearchosen.equals("Second Year")) {
                     if(t1==crsopts[0]) {
                         mDatabase.child("ME courses").child("2nd year").child("ME200").child(mUserId).setValue(student);
                     }
@@ -577,10 +501,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,t6,te1,te2);
 
-                    mDatabase.child("users").child(mUserId).setValue(user);
+                    mDatabase.child("USERS").child(mUserId).setValue(user);
                 }
                 //FOR THIRD YEAR
-                if (yearchosen == "Third Year") {
+                if (yearchosen.equals("Third Year")) {
                     if(t1==crsopts[0]){
                         mDatabase.child("ME courses").child("3rd year").child("ME300").child(mUserId).setValue(student);
                     }
@@ -617,10 +541,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,t5,"",te1,te2);
 
-                    mDatabase.child("users").child(mUserId).setValue(user);
+                    mDatabase.child("USERS").child(mUserId).setValue(user);
                 }
                 //FOR FINAL YEAR
-                if (yearchosen == "Fourth Year") {
+                if (yearchosen.equals("Fourth Year")) {
                     if(t1.equals(crsopts[0])){
                         mDatabase.child("ME courses").child("4th year").child("ME400").child(mUserId).setValue(student);
                     }
@@ -653,7 +577,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     User user=new User(namestr,branchchosen,yearchosen,regchosen,rollchosen,t1,t2,t3,t4,"","",te1,te2);
 
-                    mDatabase.child("users").child(mUserId).setValue(user);
+                    mDatabase.child("USERS").child(mUserId).setValue(user);
                 }
             }
 
@@ -672,20 +596,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
         if (v == save) {
 
-            String namestr = name.getText().toString();
-            String regchosen = reg.getText().toString();
-            String rollchosen = roll.getText().toString();
-            if (namestr.length() <= 2) {
-                Toast.makeText(this, "Name field too short !", Toast.LENGTH_SHORT).show();
-            }  else if (regchosen.length() != 6) {
-                Toast.makeText(this, "Registration number must be of 6 digits !", Toast.LENGTH_SHORT).show();
-            } else if (rollchosen.length() != 7) {
-                Toast.makeText(this, "Invalid roll number !", Toast.LENGTH_SHORT).show();
-            } else {
-
                 lock = 1;
 
-                if (yearchosen == "Second Year") {
+            //Toast.makeText(ProfileActivity.this,readname+readbranch+yearchosen,Toast.LENGTH_SHORT).show();
+
+                if (yearchosen.equals("Second Year")) {
 
                     sp1=(Spinner)findViewById(R.id.s1);
                     ArrayAdapter<String> adaptersp1 = new ArrayAdapter<String>(this,
@@ -743,7 +658,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     spe2.setOnItemSelectedListener(this);
                     spe2.setEnabled(true);
 
-                    if (branchchosen == "Computer Science and Engineering") {
+                    //Toast.makeText(ProfileActivity.this,readname+readbranch+yearchosen,Toast.LENGTH_SHORT).show();
+
+
+                    if (branchchosen.equals("Computer Science and Engineering")) {
                         b1.setText(c2opts[0]);
                         b2.setText(c2opts[1]);
                         b3.setText(c2opts[2]);
@@ -753,7 +671,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         be1.setText(c2eopts[0]);
                         be2.setText(c2eopts[1]);
                     }
-                    if (branchchosen == "Electrical and Electronic Engineering") {
+                    if (branchchosen.equals("Electrical and Electronic Engineering")) {
                         b1.setText(e2opts[0]);
                         b2.setText(e2opts[1]);
                         b3.setText(e2opts[2]);
@@ -763,7 +681,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         be1.setText(e2eopts[0]);
                         be2.setText(e2eopts[1]);
                     }
-                    if (branchchosen == "Mechanical Engineering") {
+                    if (branchchosen.equals("Mechanical Engineering")) {
                         b1.setText(m2opts[0]);
                         b2.setText(m2opts[1]);
                         b3.setText(m2opts[2]);
@@ -775,7 +693,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 }
 
-                if (yearchosen == "Third Year") {
+                if (yearchosen.equals("Third Year")) {
 
                     sp1=(Spinner)findViewById(R.id.s1);
                     ArrayAdapter<String> adaptersp1 = new ArrayAdapter<String>(this,
@@ -835,7 +753,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     b6.setText("");
 
-                    if (branchchosen == "Computer Science and Engineering") {
+                    if (branchchosen.equals("Computer Science and Engineering")) {
                         b1.setText(c3opts[0]);
                         b2.setText(c3opts[1]);
                         b3.setText(c3opts[2]);
@@ -844,7 +762,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         be1.setText(c3eopts[0]);
                         be2.setText(c3eopts[1]);
                     }
-                    if (branchchosen == "Electrical and Electronic Engineering") {
+                    if (branchchosen.equals("Electrical and Electronic Engineering")) {
                         b1.setText(e3opts[0]);
                         b2.setText(e3opts[1]);
                         b3.setText(e3opts[2]);
@@ -853,7 +771,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         be1.setText(e3eopts[0]);
                         be2.setText(e3eopts[1]);
                     }
-                    if (branchchosen == "Mechanical Engineering") {
+                    if (branchchosen.equals("Mechanical Engineering")) {
                         b1.setText(m3opts[0]);
                         b2.setText(m3opts[1]);
                         b3.setText(m3opts[2]);
@@ -864,7 +782,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 }
 
-                if (yearchosen == "Fourth Year") {
+                if (yearchosen.equals("Fourth Year")) {
 
                     sp1=(Spinner)findViewById(R.id.s1);
                     ArrayAdapter<String> adaptersp1 = new ArrayAdapter<String>(this,
@@ -925,7 +843,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     b5.setText("");
                     b6.setText("");
 
-                    if (branchchosen == "Computer Science and Engineering") {
+                    if (branchchosen.equals("Computer Science and Engineering")) {
                         b1.setText(c4opts[0]);
                         b2.setText(c4opts[1]);
                         b3.setText(c4opts[2]);
@@ -933,7 +851,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         be1.setText(c4eopts[0]);
                         be2.setText(c4eopts[1]);
                     }
-                    if (branchchosen == "Electrical and Electronic Engineering") {
+                    if (branchchosen.equals("Electrical and Electronic Engineering")) {
                         b1.setText(e4opts[0]);
                         b2.setText(e4opts[1]);
                         b3.setText(e4opts[2]);
@@ -941,7 +859,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         be1.setText(e4eopts[0]);
                         be2.setText(e4eopts[1]);
                     }
-                    if (branchchosen == "Mechanical Engineering") {
+                    if (branchchosen.equals("Mechanical Engineering")) {
                         b1.setText(m4opts[0]);
                         b2.setText(m4opts[1]);
                         b3.setText(m4opts[2]);
@@ -950,8 +868,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         be2.setText(m4eopts[1]);
                     }
                 }
-
-            }
 
         }
         if (v == regbutton) {
@@ -970,9 +886,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        Spinner spinner = (Spinner) parent;
-        Spinner spinner1 = (Spinner) parent;
-
         Spinner si1=(Spinner) parent;
         Spinner si2=(Spinner) parent;
         Spinner si3=(Spinner) parent;
@@ -982,14 +895,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         Spinner sei1=(Spinner) parent;
         Spinner sei2=(Spinner) parent;
 
-        if(spinner.getId() == R.id.SpinnerBranch)
-        {
-            branchchosen=parent.getItemAtPosition(position).toString();
-        }
-        if(spinner1.getId() == R.id.SpinnerYear)
-        {
-            yearchosen=parent.getItemAtPosition(position).toString();
-        }
         if(si1.getId() == R.id.s1){
             t1=parent.getItemAtPosition(position).toString();
         }

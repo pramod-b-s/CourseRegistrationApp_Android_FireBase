@@ -207,7 +207,7 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
             }
         };
 
-        mDatabase.child("users").child(mUserId).addListenerForSingleValueEvent(postListener);
+        mDatabase.child("USERS").child(mUserId).addListenerForSingleValueEvent(postListener);
 
     }
 
@@ -215,7 +215,6 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
 
         if(readyear.equals(yearopts[0])){
             if(readbranch.equals(branchopts[0])) {
-                mDatabase.child("CO students").child("2nd year").child(mUserId).removeValue();
 
                 if(cr1nm.equals(crsopts[0])) {
                     mDatabase.child("CO courses").child("2nd year").child("CO200").child(mUserId).removeValue();
@@ -245,7 +244,6 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
 
             }
             if(readbranch.equals(branchopts[1])){
-                mDatabase.child("EE students").child("2nd year").child(mUserId).removeValue();
 
                 if(cr1nm.equals(crsopts[0])) {
                     mDatabase.child("EE courses").child("2nd year").child("EE200").child(mUserId).removeValue();
@@ -275,7 +273,6 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
 
             }
             if(readbranch.equals(branchopts[2])){
-                mDatabase.child("ME students").child("2nd year").child(mUserId).removeValue();
 
                 if(cr1nm.equals(crsopts[0])) {
                     mDatabase.child("ME courses").child("2nd year").child("ME200").child(mUserId).removeValue();
@@ -307,7 +304,6 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
 
         if(readyear.equals(yearopts[1])){
             if(readbranch.equals(branchopts[0])){
-                mDatabase.child("CO students").child("3rd year").child(mUserId).removeValue();
 
                 if(cr1nm.equals(crsopts[0])) {
                     mDatabase.child("CO courses").child("3rd year").child("CO300").child(mUserId).removeValue();
@@ -333,7 +329,6 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
                 }
             }
             if(readbranch.equals(branchopts[1])){
-                mDatabase.child("EE students").child("3rd year").child(mUserId).removeValue();
 
                 if(cr1nm.equals(crsopts[0])) {
                     mDatabase.child("EE courses").child("3rd year").child("EE300").child(mUserId).removeValue();
@@ -359,7 +354,6 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
                 }
             }
             if(readbranch.equals(branchopts[2])){
-                mDatabase.child("ME students").child("3rd year").child(mUserId).removeValue();
 
                 if(cr1nm.equals(crsopts[0])) {
                     mDatabase.child("ME courses").child("3rd year").child("ME300").child(mUserId).removeValue();
@@ -388,7 +382,6 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
 
         if(readyear.equals(yearopts[2])){
             if(readbranch.equals(branchopts[0])){
-                mDatabase.child("CO students").child("4th year").child(mUserId).removeValue();
 
                 if(cr1nm.equals(crsopts[0])) {
                     mDatabase.child("CO courses").child("4th year").child("CO400").child(mUserId).removeValue();
@@ -411,7 +404,6 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
                 }
             }
             if(readbranch.equals(branchopts[1])){
-                mDatabase.child("EE students").child("4th year").child(mUserId).removeValue();
 
                 if(cr1nm.equals(crsopts[0])) {
                     mDatabase.child("EE courses").child("4th year").child("EE400").child(mUserId).removeValue();
@@ -434,7 +426,6 @@ public class EditDetails extends AppCompatActivity implements View.OnClickListen
                 }
             }
             if(readbranch.equals(branchopts[2])){
-                mDatabase.child("ME students").child("4th year").child(mUserId).removeValue();
 
                 if(cr1nm.equals(crsopts[0])) {
                     mDatabase.child("ME courses").child("4th year").child("ME400").child(mUserId).removeValue();

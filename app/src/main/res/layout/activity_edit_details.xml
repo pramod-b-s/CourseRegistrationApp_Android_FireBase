@@ -4,13 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollvw"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:scrollbars="vertical">
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:background="#CCFFFF">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:orientation="vertical"
-        android:layout_height="fill_parent"
-        android:background="#CCFFFF">
+        android:layout_height="fill_parent">
 
         <TextView
             android:id="@+id/titlefield"

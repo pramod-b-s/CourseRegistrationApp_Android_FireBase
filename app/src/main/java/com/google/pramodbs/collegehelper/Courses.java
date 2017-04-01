@@ -377,7 +377,7 @@ public class Courses extends AppCompatActivity {
                 // ...
             }
         };
-        mDatabase.child("users").child(mUserId).addValueEventListener(postListener);
+        mDatabase.child("USERS").child(mUserId).addValueEventListener(postListener);
 
     }
 }

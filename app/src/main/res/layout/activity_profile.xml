@@ -12,56 +12,11 @@
         android:layout_height="fill_parent"
         android:background="#FFFFCC">
 
-        <TextView
-            android:id="@+id/titlefield"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter following Details"
-            android:textSize="15pt"
-            android:textColor="#000000">
-        </TextView>
-
-        <EditText
-            android:id="@+id/namefield"
-            android:layout_height="wrap_content"
-            android:hint="Enter full name"
-            android:layout_width="fill_parent">
-        </EditText>
-
-        <EditText
-            android:id="@+id/rollno"
-            android:layout_height="wrap_content"
-            android:hint="Enter Roll No."
-            android:layout_width="fill_parent">
-        </EditText>
-
-        <EditText
-            android:id="@+id/regno"
-            android:layout_height="wrap_content"
-            android:hint="Enter Reg No."
-            android:inputType="number"
-            android:layout_width="fill_parent">
-        </EditText>
-
-        <Spinner
-            android:id="@+id/SpinnerBranch"
-            android:layout_height="wrap_content"
-            android:prompt="@string/branch_prompt"
-            android:layout_width="match_parent">
-        </Spinner>
-
-        <Spinner
-            android:id="@+id/SpinnerYear"
-            android:layout_height="wrap_content"
-            android:prompt="@string/year_prompt"
-            android:layout_width="match_parent">
-        </Spinner>
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Available Courses"
-            android:id="@+id/savebtn"/>
+            android:id="@+id/savebtn"
+            android:text="show available courses"/>
 
         <TextView
             android:id="@+id/core"

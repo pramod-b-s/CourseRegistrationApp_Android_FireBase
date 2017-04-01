@@ -5,7 +5,7 @@
     <string name="branch_prompt">Select Your Branch</string>
     <string name="crs_prompt">Select Your course</string>
     <string name="opts_prompt">Select Your option</string>
- <string name="some_text">
+    <string name="some_text">
      Some North American Countries!
  </string>
 </resources>

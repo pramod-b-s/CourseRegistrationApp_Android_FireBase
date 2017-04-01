@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button loginbtn;
     private EditText email;
     private EditText passwd;
-    private TextView regsignin;
+    private TextView regsignin,gm1;
 
     private ProgressDialog progress;
 
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         email=(EditText)findViewById(R.id.email);
         passwd=(EditText)findViewById(R.id.password);
         regsignin=(TextView)findViewById(R.id.txtview);
+        gm1=(TextView)findViewById(R.id.game1);
 
         email.setText("@nitk.edu.in");
 
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         loginbtn.setOnClickListener(this);
         regsignin.setOnClickListener(this);
+        gm1.setOnClickListener(this);
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -95,6 +97,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         progress.dismiss();
                         if(task.isSuccessful()){
                             Toast.makeText(getApplicationContext(),"LogIn Successful !",Toast.LENGTH_LONG).show();
+                            FirebaseUser user=firebaseAuth.getCurrentUser();
+                            String nm=user.getDisplayName();
+                            //Toast.makeText(getApplicationContext(),nm,Toast.LENGTH_LONG).show();
                             Intent gotoonlogin=new Intent(getApplicationContext(),OnLoginActivity.class);
 
                             startActivity(gotoonlogin);
@@ -117,6 +122,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent gototreg=new Intent(this,RegisterActivity.class);
 
             startActivity(gototreg);
+        }
+        if(v==gm1){
+            Toast.makeText(MainActivity.this,"Enjoy !",Toast.LENGTH_SHORT).show();
+            Intent gototnest=new Intent(this,GameActivity.class);
+
+            startActivity(gototnest);
         }
     }
 }

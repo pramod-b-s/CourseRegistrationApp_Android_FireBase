@@ -73,6 +73,52 @@
         />
 
 
+    <EditText
+        android:id="@+id/namefield"
+        android:layout_height="wrap_content"
+        android:hint="Enter full name"
+        android:layout_width="fill_parent"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF">
+    </EditText>
+
+    <EditText
+        android:id="@+id/rollno"
+        android:layout_height="wrap_content"
+        android:hint="Enter Roll No."
+        android:layout_width="fill_parent"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF">
+    </EditText>
+
+    <EditText
+        android:id="@+id/regno"
+        android:layout_height="wrap_content"
+        android:hint="Enter Reg No."
+        android:inputType="number"
+        android:layout_width="fill_parent"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF">
+    </EditText>
+
+    <Spinner
+        android:id="@+id/SpinnerBranch"
+        android:layout_height="wrap_content"
+        android:prompt="@string/branch_prompt"
+        android:layout_width="match_parent"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF">
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/SpinnerYear"
+        android:layout_height="wrap_content"
+        android:prompt="@string/year_prompt"
+        android:layout_width="match_parent"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF">
+    </Spinner>
+
     <Button
         android:text="Register"
         android:id="@+id/regbutton"
@@ -82,8 +128,8 @@
         android:layout_below="@+id/regpasswordre"
         android:layout_alignLeft="@+id/regpasswordre"
         android:layout_alignStart="@+id/regpasswordre"
-        android:textColor="#FFFFFF"
-        android:background="#808080"/>
+        android:background="#000000"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:text="Already Registered ? Login here"
